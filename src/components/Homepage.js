@@ -1,7 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Button, Dropdown, Form } from 'semantic-ui-react'
+import { fetchCountry } from '../redux/actions'
 
 class Homepage extends React.Component {
+
 
 	constructor() {
 		super()
@@ -10,16 +13,55 @@ class Homepage extends React.Component {
 		}
 	}
 
+	getCountryOptions(countries) {
+		return countries.map(country => ({key: country.country_code.toLowerCase(), value: country.country_code.toLowerCase(), text: country.name}))
+	}
+
+	handleSelect = (e) => {
+		this.setState({searchValue: e.currentTarget.innerText})
+	}
+	
+
+	handleSubmit = (countries) => {
+		const selectedCountry = countries.find(country => country.name === this.state.searchValue)
+		
+		this.props.fetchCountry(selectedCountry.id)
+	}
+
+
+
 	render() {
-		console.log(this.props)
-		return <div>Homepage</div>
+
+		const countries = this.props.countries
+		const countryOptions = (countries.length ? this.getCountryOptions(countries) : null)
+		return (
+			<div>
+			<Form onSubmit={() => this.handleSubmit(countries)}>
+			  <Dropdown
+    			placeholder='Select Country'
+   				fluid
+    			search
+    			selection
+    			options={countryOptions}
+    			onSelect={this.handleSelect}
+  				/>
+  			<Button type='submit'>Search</Button>
+  			</Form>
+
+			</div>
+			)
 	}
 
 
 }
 
-const mapStateToProps = (state) => {
-	return {countries: state.countries}
+
+const mapStateToProps = (state) => ({countries: state.countries})
+
+
+const mapDispatchToProps = (dispatch) => {
+	return { fetchCountry: (id) => dispatch(fetchCountry(id))}
 }
 
-export default connect(mapStateToProps)(Homepage)
+export default connect(mapStateToProps, mapDispatchToProps)(Homepage)
+
