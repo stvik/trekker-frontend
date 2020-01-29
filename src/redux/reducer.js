@@ -1,7 +1,24 @@
 import { combineReducers } from 'redux'
+import * as action from './actions'
 
-function reducer(oldState) {
-	return oldState
+
+function countriesReducer(state = {countries: []}, action) {
+	switch (action.type) {
+		case 'ADD_COUNTRIES':
+			return {
+				...state,
+				countries: action.countries
+			}
+
+		default:
+			return state
+
+	}
 }
 
-export default reducer
+const rootReducer = combineReducers({
+  countries: countriesReducer
+
+})
+
+export default rootReducer
