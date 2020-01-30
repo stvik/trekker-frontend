@@ -9,7 +9,7 @@ const Navbar = () => {
      		<Icon name='question circle' size='huge' />
     	</Grid.Column>
     	<Grid.Column floated='right' width={1}>
-     		<Icon name='sign-in' size='huge' />
+     		<Link to='/login' ><Icon name='sign-in' size='huge' /></Link>
     	</Grid.Column>
   	</Grid>
 		)

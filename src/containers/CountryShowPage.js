@@ -4,6 +4,7 @@ import { fetchCountry } from '../redux/actions'
 import { Button, Grid } from 'semantic-ui-react'
 import CountryInfo from '../components/CountryInfo'
 import { Link } from 'react-router-dom'
+import TopCitiesContainer from './TopCitiesContainer'
 
 class CountryShowPage extends  React.Component {
 
@@ -22,6 +23,9 @@ class CountryShowPage extends  React.Component {
 			</Grid.Row>
 			<Grid.Row>
 				{this.props.country ? <CountryInfo /> : null}
+			</Grid.Row>
+			<Grid.Row centered> 
+				{this.props.country ? <TopCitiesContainer /> : null}
 			</Grid.Row>
 		 </Grid>
 		)

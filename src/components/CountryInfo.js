@@ -15,7 +15,6 @@ class CountryShowPage extends  React.Component {
 
 	render() {
 		const country = this.props.country
-		console.log(country)
 	return ( 
 
 		<Fragment>
@@ -23,7 +22,7 @@ class CountryShowPage extends  React.Component {
 			<Grid.Column width={4}>
 			 	<Image 
 				 src={`https://source.unsplash.com/random/900%C3%97700/?${country.name}`}
-				 size='medium' 
+				 size='large' 
 				 rounded 
 				 />
 		 	</Grid.Column>
