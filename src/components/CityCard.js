@@ -3,19 +3,13 @@ import { Header, Segment, Container, Image}  from 'semantic-ui-react'
 
 
 const CityCard =  (props) => {
-	console.log(props)
-
-	return (  
-		
+	return (		
 	<Fragment>
 		 < Image  
 		 src='https://source.unsplash.com/random/900%C3%97700/?europe'
 		 />	
-	</Fragment>
-	
-		 
-		
-		)
+	</Fragment>		
+	)
 }
 
 export default CityCard

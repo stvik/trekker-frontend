@@ -5,8 +5,6 @@ import CityCard from '../components/CityCard'
 
 
 const TopCitiesContainer =  (props) => {
-	console.log(props)
-
 	return (  
 		<Grid centered>
 			<Segment inverted padded textAlign='center' style={{opacity:.7}}>

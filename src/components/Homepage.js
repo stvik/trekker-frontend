@@ -15,17 +15,13 @@ class Homepage extends React.Component {
 	}
 
 	getCountryOptions(countries) {
-		return countries.map(country => ({key: country.country_code.toLowerCase(), value: country.country_code.toLowerCase(), text: country.name}))
+		return countries.map(country => ({key: country.country_code.toLowerCase(),
+										 value: country.country_code.toLowerCase(), 
+										 text: country.name}))
 	}
-
-	handleSelect = (e) => {
-		this.setState({searchValue: e.currentTarget.innerText})
-	}
-	
 
 	handleSubmit = (countries) => {
 		const selectedCountry = countries.find(country => country.name === this.state.searchValue)
-		// this.props.fetchCountry(selectedCountry.id)
 		this.props.history.push(`/countries/${selectedCountry.id}`)
 	}
 
@@ -44,7 +40,7 @@ class Homepage extends React.Component {
 					search
 					selection
 					options={countryOptions}
-					onSelect={this.handleSelect}
+					onSelect={(e) => this.setState({searchValue: e.currentTarget.innerText}) }
 					/>
 		  			<Button type='submit' >Search</Button>
 
@@ -53,17 +49,9 @@ class Homepage extends React.Component {
 			</div>
 			)
 	}
-
-
 }
 
-
 const mapStateToProps = (state) => ({countries: state.countries})
-
-
-// const mapDispatchToProps = (dispatch) => {
-// 	return { fetchCountry: (id) => dispatch(fetchCountry(id))}
-// }
 
 export default connect(mapStateToProps)(Homepage)
 

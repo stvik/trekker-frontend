@@ -1,9 +1,27 @@
 import React, { Fragment } from 'react'
 import { Divider, Icon, Grid, Header, Segment, Button, Form}  from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { postUser } from '../redux/actions'
 
 
 const LoginPage =  (props) => {
+
+	const handleSubmit = (e) => {
+		const account = {
+			username: e.currentTarget.username.value,
+			password: e.currentTarget.password.value
+		}
+		const configObj = {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json',
+			Accept: 'application/json'
+		},
+		body: JSON.stringify(account)
+	}
+		props.postUser(configObj)
+	}
 
 	return (  
 		
@@ -12,13 +30,9 @@ const LoginPage =  (props) => {
 		 <Segment inverted padded textAlign='center' style={{opacity:.7}}>
 		 	<Icon name='user circle' size='massive' />
 		 	<Divider />
-		 	<Form padding>
-		 		<Form.Field>
-		 			<input placeholder='username' />
-		 		</Form.Field>
-		 		<Form.Field>
-		 			<input type='password' placeholder='password' />
-		 		</Form.Field>
+		 	<Form padding onSubmit={handleSubmit}>
+		 		<Form.Input name='username' placeholder='username' />
+		 		<Form.Input name='password' type='password' placeholder='password' />
 		 		<Button content='Login' color='teal'/>
 		 	</Form>
 		 		<Divider horizontal inverted >Or</Divider>
@@ -31,4 +45,12 @@ const LoginPage =  (props) => {
 		)
 }
 
-export default LoginPage
+const mapStateToProps = (state) => {
+
+}
+
+function mapDispatchToProps(dispatch) {
+  return { postUser: (configObj) => dispatch(postUser(configObj))}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage)

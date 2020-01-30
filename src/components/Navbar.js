@@ -11,10 +11,8 @@ const Navbar = () => {
     	<Grid.Column floated='right' width={1}>
      		<Link to='/login' ><Icon name='sign-in' size='huge' /></Link>
     	</Grid.Column>
-  	</Grid>
-		)
-
-
+  	</Grid>		
+  	)
 }
 
 export default Navbar

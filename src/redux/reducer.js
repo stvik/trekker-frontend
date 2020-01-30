@@ -24,12 +24,21 @@ function countryReducer(state = null, action) {
 
 }
 
+function userReducer(state=null, action) {
+	switch(action.type) {
+		case 'SET_CURRENT_USER':
+			return action.user
+		default:
+			return state
+	}
+}
+
 
 
 const rootReducer = combineReducers({
   countries: countriesReducer,
-  selectedCountry: countryReducer
-
+  selectedCountry: countryReducer,
+  currentUser: userReducer
 })
 
 export default rootReducer
