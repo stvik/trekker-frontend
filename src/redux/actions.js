@@ -22,7 +22,11 @@ export function postUser(configObj) {
 	}
 }
 
-export function signInUser(user) {
+export function signInUser(account) {
 
-	return(dispatch) => dispatch({type: 'SET_CURRENT_USER' ,user})
+	return(dispatch) => {
+		fetch(`http://localhost:3000/users/login?username=${account.username}&password=${account.password}`)
+		.then(resp => resp.json())
+		.then(user => dispatch({type: 'SET_CURRENT_USER' ,user}))
+	}
 }

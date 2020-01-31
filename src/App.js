@@ -5,6 +5,7 @@ import Navbar from './components/Navbar'
 import CountryShowPage from './containers/CountryShowPage'
 import LoginPage from './containers/LoginPage'
 import CreateAccountForm from './components/CreateAccountForm'
+import Dashboard from './containers/Dashboard'
 import { fetchCountries } from './redux/actions'
 import Homepage from './components/Homepage'
 import {Switch, Route} from 'react-router-dom'
@@ -22,6 +23,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/users/new' component={CreateAccountForm} />
           <Route exact path='/login' component={LoginPage} />
+          <Route exact path='/dashboard' component={Dashboard} />
           <Route path='/countries/:countryId' component={CountryShowPage} />
           <Route path="/" component={Homepage} />
         </Switch>

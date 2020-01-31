@@ -48,7 +48,7 @@ class CreateAccountPage extends Component {
 			 		<Form.Input name='bio' placeholder='Tell us about yourself..' />
 			 		<Form.Input name='location' placeholder='Where do you currently live?' />
 			 		<Form.Input name='image'placeholder='Picture URL' />
-			 		<Button content='Create Account' color='teal'/>
+			 		<Link to='/dashboard'><Button content='Create Account' color='teal'/></Link>
 			 	</Form>
 			 </Segment>
 		</Grid>
