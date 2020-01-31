@@ -1,12 +1,32 @@
-import React from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import { Button, Grid } from 'semantic-ui-react'
+import { Segment, Grid, Header } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import CountryDropdown from '../components/CountryDropdown'
+import TravelList from './TravelList'
 
-class CountryShowPage extends  React.Component {
+class Dashboard extends Component {
 
 	render() {
-		return null
+		return (
+			<Fragment>
+				<CountryDropdown history={this.props.history}/>
+				<Grid>
+					<Grid.Row >
+						<Grid.Column width={4}>
+							<TravelList title='Visited'/>
+						</Grid.Column>
+						<Grid.Column width={8}>
+							<Segment inverted style={{opacity:.7}} textAlign='center'> <Header as='h1'>MAP</Header></Segment>
+						</Grid.Column>
+						<Grid.Column width={4}>
+							<TravelList title='Travel Goals'/>
+						</Grid.Column>
+					</Grid.Row>
+				</Grid>
+			</Fragment>
+
+			)
 	}
 }
 
@@ -15,4 +35,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps)(CountryShowPage)
+export default connect(mapStateToProps)(Dashboard)

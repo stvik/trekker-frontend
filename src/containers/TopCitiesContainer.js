@@ -9,7 +9,7 @@ const TopCitiesContainer =  (props) => {
 		<Grid centered>
 			<Segment inverted padded textAlign='center' style={{opacity:.7}}>
 				<Image.Group size='small' floated='center'>
-					{props.country.cities.map(city => <CityCard city={city} />)}
+					{props.country.cities.map((city, index) => <CityCard city={city} key={index}/>)}
 				</Image.Group>
 			</Segment>
 		</Grid>

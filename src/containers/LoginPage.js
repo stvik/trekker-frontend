@@ -7,12 +7,14 @@ import { signInUser } from '../redux/actions'
 
 const LoginPage =  (props) => {
 
+
 	const handleSubmit = (e) => {
 		const account = {
 			username: e.currentTarget.username.value,
 			password: e.currentTarget.password.value
 			}
 		props.signInUser(account)
+		props.history.push('/dashboard')
 	}
 
 	return (  
@@ -22,10 +24,10 @@ const LoginPage =  (props) => {
 		 <Segment inverted textAlign='center' style={{opacity:.7}}>
 		 	<Icon name='user circle' size='massive' />
 		 	<Divider />
-		 	<Form padding onSubmit={handleSubmit}>
+		 	<Form onSubmit={handleSubmit}>
 		 		<Form.Input name='username' placeholder='username' />
 		 		<Form.Input name='password' type='password' placeholder='password' />
-		 		<Link to='/dashboard' ><Button content='Login' color='teal'/></Link>
+		 		<Button content='Login' color='teal'/>
 		 	</Form>
 		 		<Divider horizontal inverted >Or</Divider>
 		 		<Link to='/users/new'><Button content='Create an Account' color='olive'/></Link>

@@ -15,11 +15,10 @@ class CountryShowPage extends  React.Component {
 
 
 	render() {
-
 	return (  
 		<Grid>
 			<Grid.Row>
-				<Link to='/'><Button floated='left' icon='left chevron' color='teal' content='Back to Search' /></Link>
+				<Button floated='left' icon='left chevron' color='teal' content='Go Back' onClick={this.props.history.goBack}/>
 			</Grid.Row>
 			<Grid.Row>
 				{this.props.country ? <CountryInfo /> : null}
