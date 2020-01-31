@@ -18,7 +18,7 @@ class App extends Component {
 
   render() {
       return (
-      <Fragment>
+      <>
         <Navbar />
         <Switch>
           <Route exact path='/users/new' component={CreateAccountForm} />
@@ -28,7 +28,7 @@ class App extends Component {
           <Route path='/countries/:countryId' component={CountryShowPage} />
           <Route path="/" component={Homepage} />
         </Switch>
-      </Fragment>
+      </>
     )
   }
 }

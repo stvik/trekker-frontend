@@ -1,10 +1,9 @@
 import React from 'react'
 import { Link, NavLink, withRouter } from "react-router-dom";
-import { Grid, Icon } from 'semantic-ui-react'
+import { Dropdown, Grid, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 
 const Navbar = (props) => {
-  console.log(props)
 	return (
 	<Grid >
     	<Grid.Column floated='left' width={1}>
@@ -12,7 +11,7 @@ const Navbar = (props) => {
     	</Grid.Column>
     	<Grid.Column floated='right' width={1}>
      		{props.currentUser ? 
-          <Link to='/profile'><Icon name='user' size='huge' /></Link>
+            <Link to='/profile'><Icon name='user' size='huge' /></Link>
           :
           <Link to='/login' ><Icon name='sign-in' size='huge' /></Link>
         }
@@ -26,4 +25,5 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(Navbar)
-     	{/*	<Icon name='question circle' size='huge' /> */}
+     	{/*	<Icon name='question circle' size='huge' /> 
+          */}

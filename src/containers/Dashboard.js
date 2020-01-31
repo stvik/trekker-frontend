@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { Segment, Grid, Header } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
+import { Link , Redirect } from 'react-router-dom'
 import CountryDropdown from '../components/CountryDropdown'
 import TravelList from './TravelList'
 
@@ -9,8 +9,9 @@ class Dashboard extends Component {
 
 	render() {
 		return (
+	
 			<Fragment>
-				<CountryDropdown history={this.props.history}/>
+				<CountryDropdown history={this.props.history}/> 
 				<Grid>
 					<Grid.Row >
 						<Grid.Column width={4}>
@@ -24,9 +25,13 @@ class Dashboard extends Component {
 						</Grid.Column>
 					</Grid.Row>
 				</Grid>
-			</Fragment>
+	
+			</Fragment> 
+			
+		) 
 
-			)
+	
+			
 	}
 }
 

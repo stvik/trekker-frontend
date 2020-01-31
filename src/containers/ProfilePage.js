@@ -1,7 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Button, Grid } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
+import UserInfo from '../components/UserInfo'
 
 
 class ProfilePage extends  React.Component {
@@ -13,7 +14,7 @@ class ProfilePage extends  React.Component {
 				<Link to='/dashboard'><Button floated='left' icon='left chevron' color='teal' content='Back to Dashboard'/></Link>
 			</Grid.Row>
 			<Grid.Row>
-				<p>some stuff</p>
+				{this.props.user ? <UserInfo /> : <Redirect to='/login' />}
 			</Grid.Row>
 			<Grid.Row centered> 
 				<p>more stuff</p>
