@@ -1,19 +1,50 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import { Image, Grid, Segment, Header } from 'semantic-ui-react'
+import { addToList } from '../redux/actions'
+import { Image, Grid, Segment, Header, Button } from 'semantic-ui-react'
 
 
 class CountryShowPage extends  React.Component {
 
-	displayPicture = () => {
-		if (this.props.country) {
-		 return 
-		} else {
-			return null
-		}
+	addToTravelList = (listItem) => {
+
+		const configObj = {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Accept: 'application/json'
+			},
+			body: JSON.stringify(listItem)
+			}
+		this.props.addToList(configObj)
 	}
 
+	addToGoalList = () => {
+		const newListItem = {
+			user_id: this.props.user.id,
+    		country_id: this.props.country.id,
+			visited: false,
+ 			travel_goal: true
+		}
+
+		this.addToTravelList(newListItem)
+	}
+
+	addToVisitedList = () => {
+		const newListItem = {
+				user_id: this.props.user.id,
+	    		country_id: this.props.country.id,
+				visited: true,
+	 			travel_goal: false
+		}
+
+		this.addToTravelList(newListItem)
+	}
+
+
+
 	render() {
+		console.log(this.props.user)
 		const country = this.props.country
 	return ( 
 
@@ -34,8 +65,15 @@ class CountryShowPage extends  React.Component {
 		 			<Header as='h4'>Population: {country.population}</Header>
 		 			<Header as='h4'>Languages: {country.languages}</Header>
 		 			<Header as='h4'>Currency: {country.currency}</Header>
-
+		 			{this.props.user ?
+		 			<>
+			 			<Button inverted basic color='green' content='Add to Travel Goals' onClick={this.addToGoalList}/>
+			 			<Button inverted basic color='green' content="I've been here" onClick={this.addToVisitedList}/>
+		 			</>
+		 			:
+		 			null}
 		 		</Segment>
+		 	
 		 	</Grid.Column>
 		 </Fragment>
 		)
@@ -43,9 +81,14 @@ class CountryShowPage extends  React.Component {
 }
 
 const mapStateToProps = (state) => {
-	return {country: state.selectedCountry}
+	return {country: state.selectedCountry, 
+			user: state.currentUser}
+}
+
+const mapDispatchToProps = (dispatch) => {
+	return { addToList: (configObj) => dispatch(addToList(configObj))}
 }
 
 
 
-export default connect(mapStateToProps)(CountryShowPage)
+export default connect(mapStateToProps, mapDispatchToProps)(CountryShowPage)

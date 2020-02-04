@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Button, Grid } from 'semantic-ui-react'
 import { Link, Redirect } from 'react-router-dom'
 import UserInfo from '../components/UserInfo'
+import TravelList from './TravelList'
 
 
 class ProfilePage extends  React.Component {
@@ -16,8 +17,12 @@ class ProfilePage extends  React.Component {
 			<Grid.Row>
 				{this.props.user ? <UserInfo /> : <Redirect to='/login' />}
 			</Grid.Row>
-			<Grid.Row centered> 
-				<p>more stuff</p>
+			<Grid.Row > 
+				<Grid.Column width={2} ></Grid.Column>
+				<Grid.Column width={3} ><TravelList title='Visited'/></Grid.Column>
+				<Grid.Column width={4} ></Grid.Column>
+				<Grid.Column width={3} ><TravelList title='Travel Goals'/></Grid.Column>
+				<Grid.Column width={2} ></Grid.Column>
 			</Grid.Row>
 		 </Grid>
 		)

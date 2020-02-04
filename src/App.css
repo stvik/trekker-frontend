@@ -1,8 +1,4 @@
-.App {
-  background-image: url(https://img1.goodfon.com/wallpaper/nbig/a/44/novaya-zelandiya-gora-vulkan.jpg);
 
-
-}
 
 .App-logo {
   height: 40vmin;
@@ -38,3 +34,10 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  background-image: url('https://img5.goodfon.com/wallpaper/nbig/2/1d/4k-ultra-hd-background-blur-effect-mountains-forest-trees-mo.jpg')  !important;
+  background-size: cover !important;
+  background-attachment: fixed !important;
+}
+

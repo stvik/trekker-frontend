@@ -30,3 +30,11 @@ export function signInUser(account) {
 		.then(user => dispatch({type: 'SET_CURRENT_USER' ,user}))
 	}
 }
+
+export function addToList(configObj) {
+	return(dispatch) => {
+		fetch(`http://localhost:3000/user_countries`, configObj)
+		.then(resp => resp.json())
+		.then(userCountry => console.log(userCountry))
+	}
+}
