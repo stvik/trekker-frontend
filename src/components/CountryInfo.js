@@ -52,7 +52,7 @@ class CountryShowPage extends  React.Component {
 			<Grid.Column width={1} />
 			<Grid.Column width={4}>
 			 	<Image 
-				 src={`https://source.unsplash.com/random/900%C3%97700/?${country.name}`}
+				 src={country.flag}
 				 size='large' 
 				 rounded 
 				 />

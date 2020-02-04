@@ -4,14 +4,13 @@ import { Image, Grid, Segment, Header } from 'semantic-ui-react'
 
 
 const UserInfo = (props) => {
-	console.log(props)
 	return ( 
 
 		<Fragment>
 			<Grid.Column width={1} />
 			<Grid.Column width={4}>
 			 	<Image 
-				 src={`https://source.unsplash.com/random/600%C3%97600/?person`}
+				 src={props.user.image}
 				 size='large' 
 				 rounded
 				 />

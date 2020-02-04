@@ -7,6 +7,13 @@ import TravelList from './TravelList'
 
 
 class ProfilePage extends  React.Component {
+	filterVisited = () => {
+		return this.props.user.user_countries.filter(uc => uc.visited)
+	}
+
+	filterGoals = () => {
+		return this.props.user.user_countries.filter(uc => uc.travel_goal)
+	}
 
 	render() {
 	return (  
@@ -19,9 +26,9 @@ class ProfilePage extends  React.Component {
 			</Grid.Row>
 			<Grid.Row > 
 				<Grid.Column width={2} ></Grid.Column>
-				<Grid.Column width={3} ><TravelList title='Visited'/></Grid.Column>
+				<Grid.Column width={3} ><TravelList title='Visited' countries={this.filterVisited()}/></Grid.Column>
 				<Grid.Column width={4} ></Grid.Column>
-				<Grid.Column width={3} ><TravelList title='Travel Goals'/></Grid.Column>
+				<Grid.Column width={3} ><TravelList title='Travel Goals' countries={this.filterGoals()}/></Grid.Column>
 				<Grid.Column width={2} ></Grid.Column>
 			</Grid.Row>
 		 </Grid>

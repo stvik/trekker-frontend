@@ -1,31 +1,48 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import { Segment, Grid, Header } from 'semantic-ui-react'
+import { Segment, Grid, Header, Container } from 'semantic-ui-react'
 import { Link , Redirect } from 'react-router-dom'
 import CountryDropdown from '../components/CountryDropdown'
 import TravelList from './TravelList'
+import Map from '../components/Map'
 
 class Dashboard extends Component {
 
+	filterVisited = () => {
+		return this.props.currentUser.user_countries.filter(uc => uc.visited)
+	}
+
+	filterGoals = () => {
+		return this.props.currentUser.user_countries.filter(uc => uc.travel_goal)
+	}
+
 	render() {
+
+		console.log(this.props)
 		return (
 	
 			<Fragment>
-				<CountryDropdown history={this.props.history}/> 
+				<Container><CountryDropdown history={this.props.history}/></Container>
 				<Grid>
 					<Grid.Row >
 						<Grid.Column width={4}>
-							<TravelList title='Visited'/>
+							<TravelList title='Visited' countries={this.props.currentUser ? this.filterVisited() : null}/>
 						</Grid.Column>
 						<Grid.Column width={8}>
-							<Segment inverted style={{opacity:.7}} textAlign='center'> <Header as='h1'>MAP</Header></Segment>
+						 	<Segment style={{minHeight:'500px'}}>
+						 		<Map 
+						 		goals={this.props.currentUser ? this.filterGoals() : null}
+						 		visited={this.props.currentUser ? this.filterVisited() : null}
+						 		/>
+						 	</Segment>
 						</Grid.Column>
 						<Grid.Column width={4}>
-							<TravelList title='Travel Goals'/>
+							<TravelList title='Travel Goals' countries={this.props.currentUser ? this.filterGoals() : null}/>
 						</Grid.Column>
 					</Grid.Row>
+
 				</Grid>
-	
+				
 			</Fragment> 
 			
 		) 
