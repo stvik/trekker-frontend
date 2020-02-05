@@ -1,6 +1,6 @@
 import React, { Component} from 'react'
 import { Icon, Grid, Header, Segment, Button, Form}  from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { postUser } from '../redux/actions'
 
@@ -27,6 +27,7 @@ class CreateAccountPage extends Component {
 		body: JSON.stringify(newAccount)
 	}
 		this.props.postUser(configObj)
+
 	}
 
 	render() {
@@ -48,7 +49,7 @@ class CreateAccountPage extends Component {
 			 		<Form.Input name='bio' placeholder='Tell us about yourself..' />
 			 		<Form.Input name='location' placeholder='Where do you currently live?' />
 			 		<Form.Input name='image'placeholder='Picture URL' />
-			 		<Link to='/dashboard'><Button content='Create Account' color='teal'/></Link>
+			 		{this.props.currentUser ?  <Redirect to='/dashboard' /> : <Button content='Create Account' color='teal'/>}
 			 	</Form>
 			 </Segment>
 		</Grid>
@@ -57,7 +58,7 @@ class CreateAccountPage extends Component {
 }
 
 const mapStateToProps = (state) => {
-
+	return {currentUser: state.currentUser}
 }
 
 function mapDispatchToProps(dispatch) {

@@ -35,7 +35,7 @@ export function addToList(configObj) {
 	return(dispatch) => {
 		fetch(`http://localhost:3000/user_countries`, configObj)
 		.then(resp => resp.json())
-		.then(userCountry => console.log(userCountry))
+		.then(userCountry => dispatch({type: 'ADD_USER_COUNTRY', userCountry}))
 	}
 }
 
@@ -44,3 +44,25 @@ export function setSelectedCountryToNull() {
 	dispatch({type: 'SET_SELECTED_COUNTRY_TO_NULL'})
 	}	
 }
+
+export function deleteListItem(id) {
+	return(dispatch) =>{
+		fetch(`http://localhost:3000/user_countries/${id}`, {method: 'DELETE'})
+		.then(resp => resp.json())
+		.then(userCountry => dispatch({type: 'REMOVE_USER_COUNTRY', userCountry}))
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -12,7 +12,7 @@ const TravelList =  (props) => {
 			<Segment inverted textAlign='center' style={{opacity:.7}}>
 				<Header as='h1'>{props.title}</Header>
 				<Item.Group link>
-					{props.countries ? props.countries.map(user_country => <CountryItem country={user_country.country}/>) : null}
+					{props.countries ? props.countries.map(user_country => <CountryItem userCountryId={user_country.id} country={user_country.country}/>) : null}
 				</Item.Group>
 			</Segment>
 	

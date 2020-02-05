@@ -1,12 +1,12 @@
 import React from 'react'
 import { Item, Icon, Button}  from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-// import { connect } from 'react-redux'
+import { connect } from 'react-redux'
 import swal from 'sweetalert'
+import { deleteListItem } from '../redux/actions'
 
 
 const CountryItem =  (props) => {
-
 	const deleteItem = () => {
 		swal({
 			text: "Are you sure you want to remove this country?",
@@ -16,6 +16,7 @@ const CountryItem =  (props) => {
 		})
 		.then((willDelete) => {
 			if (willDelete) {
+				props.deleteListItem(props.userCountryId)
 				swal("It's gone!", {icon: 'success'},)
 			}
 			})
@@ -38,7 +39,8 @@ const CountryItem =  (props) => {
 	)
 }
 
+const mapDispatchToProps = (dispatch) => {
+	return { deleteListItem: (id) => dispatch(deleteListItem(id))}
+}
 
-
-
-export default CountryItem
+export default connect(null, mapDispatchToProps)(CountryItem)

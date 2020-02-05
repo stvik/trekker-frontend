@@ -23,7 +23,6 @@ class Dashboard extends Component {
 
 	render() {
 		this.onRender()
-		console.log(this.props)
 		return (
 			
 			<Fragment>

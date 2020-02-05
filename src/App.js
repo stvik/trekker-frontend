@@ -9,7 +9,7 @@ import Dashboard from './containers/Dashboard'
 import ProfilePage from './containers/ProfilePage'
 import { fetchCountries } from './redux/actions'
 import Homepage from './components/Homepage'
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route, Redirect} from 'react-router-dom'
 
 class App extends Component {
   componentDidMount () {
@@ -21,12 +21,18 @@ class App extends Component {
       <>
         <Navbar />
         <Switch>
+          <Route exact path="/" component={Homepage} />
+          <Route exact path='/countries/:countryId' component={CountryShowPage} />
           <Route exact path='/users/new' component={CreateAccountForm} />
           <Route exact path='/login' component={LoginPage} />
-          <Route exact path='/dashboard' component={Dashboard} />
-          <Route exact path='/profile' component={ProfilePage} />
-          <Route path='/countries/:countryId' component={CountryShowPage} />
-          <Route path="/" component={Homepage} />
+          {this.props.currentUser ? 
+          <Fragment>
+            <Route exact path='/dashboard' component={Dashboard} />
+            <Route exact path='/profile' component={ProfilePage} />
+          </Fragment>
+          :
+          <Redirect to="/login" />
+          }
         </Switch>
       </>
     )
@@ -38,7 +44,10 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-  return { countries: state.countries}
+  return { countries: state.countries,
+            currentUser: state.currentUser,
+
+          }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

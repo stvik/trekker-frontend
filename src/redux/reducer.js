@@ -30,6 +30,14 @@ function userReducer(state=null, action) {
 	switch(action.type) {
 		case 'SET_CURRENT_USER':
 			return action.user
+		case 'REMOVE_USER_COUNTRY':
+			return { ...state,
+				user_countries: state.user_countries.filter(userCountry => userCountry.id != action.userCountry.id)
+			}
+		case 'ADD_USER_COUNTRY':
+			return { ...state,
+				user_countries: [...state.user_countries, action.userCountry]
+			 }
 		default:
 			return state
 	}
