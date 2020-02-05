@@ -5,6 +5,7 @@ import { Button, Grid } from 'semantic-ui-react'
 import CountryInfo from '../components/CountryInfo'
 import { Link } from 'react-router-dom'
 import TopCitiesContainer from './TopCitiesContainer'
+import Map from '../components/Map'
 
 class CountryShowPage extends  React.Component {
 
@@ -15,6 +16,7 @@ class CountryShowPage extends  React.Component {
 
 
 	render() {
+	
 	return (  
 		<Grid>
 			<Grid.Row>
@@ -25,6 +27,11 @@ class CountryShowPage extends  React.Component {
 			</Grid.Row>
 			<Grid.Row centered> 
 				{this.props.country ? <TopCitiesContainer /> : null}
+			</Grid.Row>
+			<Grid.Row centered>
+				{this.props.country ? 
+				<Map />
+				: null }
 			</Grid.Row>
 		 </Grid>
 		)

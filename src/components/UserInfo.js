@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 import { Image, Grid, Segment, Header } from 'semantic-ui-react'
 
@@ -11,8 +11,8 @@ const UserInfo = (props) => {
 			<Grid.Column width={4}>
 			 	<Image 
 				 src={props.user.image}
-				 size='large' 
-				 rounded
+				 style={{width: '300px', height: '300px'}} 
+				 circular
 				 />
 		 	</Grid.Column>
 		 	<Grid.Column width={10} >

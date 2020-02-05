@@ -1,5 +1,4 @@
 import React from 'react'
-import { BrowseRouter, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Button, Dropdown, Form } from 'semantic-ui-react'
 

@@ -5,6 +5,7 @@ import { Link , Redirect } from 'react-router-dom'
 import CountryDropdown from '../components/CountryDropdown'
 import TravelList from './TravelList'
 import Map from '../components/Map'
+import { setSelectedCountryToNull } from '../redux/actions'
 
 class Dashboard extends Component {
 
@@ -16,11 +17,15 @@ class Dashboard extends Component {
 		return this.props.currentUser.user_countries.filter(uc => uc.travel_goal)
 	}
 
-	render() {
+	onRender = () => {
+		this.props.setSelectedCountryToNull()
+	}
 
+	render() {
+		this.onRender()
 		console.log(this.props)
 		return (
-	
+			
 			<Fragment>
 				<Container><CountryDropdown history={this.props.history}/></Container>
 				<Grid>
@@ -33,6 +38,9 @@ class Dashboard extends Component {
 						 		<Map 
 						 		goals={this.props.currentUser ? this.filterGoals() : null}
 						 		visited={this.props.currentUser ? this.filterVisited() : null}
+						 		startingLat={0} 
+						 		startingLong={0} 
+						 		zoom={1} 
 						 		/>
 						 	</Segment>
 						</Grid.Column>
@@ -55,6 +63,9 @@ class Dashboard extends Component {
 const mapStateToProps = (state) => {
 	return {currentUser: state.currentUser}
 }
+const mapDispatchToProps = (dispatch) => {
+	return { setSelectedCountryToNull: () => dispatch(setSelectedCountryToNull())}
+}
 
 
-export default connect(mapStateToProps)(Dashboard)
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)

@@ -17,6 +17,8 @@ function countryReducer(state = null, action) {
 	switch (action.type) {
 		case 'GET_SELECTED_COUNTRY':
 			return  action.country
+		case 'SET_SELECTED_COUNTRY_TO_NULL':
+		  	return null
 		default:
 			return state
 	}

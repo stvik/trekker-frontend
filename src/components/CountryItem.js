@@ -1,23 +1,44 @@
-import React, { Fragment } from 'react'
-import { Header, Item, Image}  from 'semantic-ui-react'
+import React from 'react'
+import { Item, Icon, Button}  from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+// import { connect } from 'react-redux'
+import swal from 'sweetalert'
 
 
 const CountryItem =  (props) => {
 
-	console.log(props)
+	const deleteItem = () => {
+		swal({
+			text: "Are you sure you want to remove this country?",
+			icon:"warning",
+			buttons: ['Actually, no..', "Yes, I'm sure"],
+			dangerMode: true,
+		})
+		.then((willDelete) => {
+			if (willDelete) {
+				swal("It's gone!", {icon: 'success'},)
+			}
+			})
+	}
+
 	return (
 
 	<Item inverted>
 		 < Item.Image  
 		 src={props.country.flag}
 		 />	
-		 <Item.Content >
-			<Link to={`/countries/${props.country.id}`}><Item.Header >{props.country.name}</Item.Header></Link>
+		 <Item.Content verticalAlign="middle">
+			<Item.Header><Link to={`/countries/${props.country.id}`}>{props.country.name}</Link></Item.Header>
+			<Item.Extra>
+	          <Button circular basic size='small' color='red' floated='right' onClick={deleteItem}><Icon name='delete'/></Button>
+	        </Item.Extra>
 		</Item.Content>
 	</Item>	
 	
 	)
 }
+
+
+
 
 export default CountryItem

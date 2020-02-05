@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Header, Segment, Container, Image}  from 'semantic-ui-react'
+import {  Image}  from 'semantic-ui-react'
 
 
 const CityCard =  (props) => {

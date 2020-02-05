@@ -4,7 +4,7 @@ import { addToList } from '../redux/actions'
 import { Image, Grid, Segment, Header, Button } from 'semantic-ui-react'
 
 
-class CountryShowPage extends  React.Component {
+class CountryShowPage extends  Component {
 
 	addToTravelList = (listItem) => {
 

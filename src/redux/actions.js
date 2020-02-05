@@ -38,3 +38,9 @@ export function addToList(configObj) {
 		.then(userCountry => console.log(userCountry))
 	}
 }
+
+export function setSelectedCountryToNull() {
+	return(dispatch) => {
+	dispatch({type: 'SET_SELECTED_COUNTRY_TO_NULL'})
+	}	
+}

@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
-import { Grid, Image, Card, Segment } from 'semantic-ui-react'
+import { Grid, Image, Segment } from 'semantic-ui-react'
 import CityCard from '../components/CityCard'
 
 

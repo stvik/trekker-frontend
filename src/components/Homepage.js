@@ -1,4 +1,4 @@
-import React, { fragment } from 'react'
+import React from 'react'
 import CountryDropdown from './CountryDropdown'
 import { Button, Grid } from 'semantic-ui-react'
 

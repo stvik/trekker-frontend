@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react'
-import { Divider, Icon, Grid, Header, Segment, Button, Form}  from 'semantic-ui-react'
+import React from 'react'
+import { Divider, Icon, Grid, Segment, Button, Form}  from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signInUser } from '../redux/actions'
