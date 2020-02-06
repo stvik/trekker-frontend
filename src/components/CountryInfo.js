@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { addToList } from '../redux/actions'
 import { Image, Grid, Segment, Header, Button } from 'semantic-ui-react'
+import swal from 'sweetalert'
 
 
 class CountryShowPage extends  Component {
@@ -17,6 +18,7 @@ class CountryShowPage extends  Component {
 			body: JSON.stringify(listItem)
 			}
 		this.props.addToList(configObj)
+
 	}
 
 	addToGoalList = () => {
@@ -44,7 +46,6 @@ class CountryShowPage extends  Component {
 
 
 	render() {
-		console.log(this.props.user)
 		const country = this.props.country
 	return ( 
 

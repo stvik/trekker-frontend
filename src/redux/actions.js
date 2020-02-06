@@ -1,3 +1,5 @@
+import swal from 'sweetalert'
+
 export function fetchCountries() {
 	return (dispatch) => {
 		fetch('http://localhost:3000/countries')
@@ -35,7 +37,22 @@ export function addToList(configObj) {
 	return(dispatch) => {
 		fetch(`http://localhost:3000/user_countries`, configObj)
 		.then(resp => resp.json())
-		.then(userCountry => dispatch({type: 'ADD_USER_COUNTRY', userCountry}))
+		.then(userCountry => {
+			if (userCountry.error) {
+			swal({
+			text: "Something went wrong...",
+			icon:"error",
+			})
+			}
+			else {
+			dispatch({type: 'ADD_USER_COUNTRY', userCountry})
+			swal({
+			text: "Country added!",
+			icon:"success",
+			})
+			}
+		})
+		
 	}
 }
 
@@ -50,6 +67,14 @@ export function deleteListItem(id) {
 		fetch(`http://localhost:3000/user_countries/${id}`, {method: 'DELETE'})
 		.then(resp => resp.json())
 		.then(userCountry => dispatch({type: 'REMOVE_USER_COUNTRY', userCountry}))
+	}
+}
+
+export function updateUser(configObj, id) {
+	return(dispatch) => {
+		fetch(`http://localhost:3000/users/${id}`, configObj)
+		.then(resp => resp.json())
+		.then(user => dispatch({type: 'SET_CURRENT_USER', user}))
 	}
 }
 

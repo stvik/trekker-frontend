@@ -1,41 +1,59 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, Component } from 'react'
 import { connect } from 'react-redux'
-import { Image, Grid, Segment, Header } from 'semantic-ui-react'
+import { Image, Grid, Segment, Header, Icon, Modal, Form } from 'semantic-ui-react'
+import EditModal from './editProfileModal'
 
 
-const UserInfo = (props) => {
+class UserInfo extends Component {
+
+	constructor() {
+		super()
+		this.state = {
+			edit: false
+		}
+	}
+
+	onEditClick = () => {
+		this.setState({
+			edit: true
+		})
+	}
+
+
+	render() {
+
 	return ( 
 
 		<Fragment>
 			<Grid.Column width={1} />
 			<Grid.Column width={4}>
 			 	<Image 
-				 src={props.user.image}
+				 src={this.props.user.image}
 				 style={{width: '300px', height: '300px'}} 
 				 circular
 				 />
 		 	</Grid.Column>
 		 	<Grid.Column width={10} >
 		 		<Grid.Row>
-		 			<Header as='h1'> {props.user.firstname} {props.user.lastname} </Header>
+		 				<Header as='h1'> {this.props.user.firstname} {this.props.user.lastname}</Header>
+		 				<EditModal user={this.props.user}/>
 		 		</Grid.Row>
 		 		<Grid.Row>
-		 			<Segment inverted style={{opacity:.7}}> 
-		 				<Header as='h4'>{props.user.username} | {props.user.location}</Header>
+		 			<Segment inverted style={{opacity:.7}}>
+		 				<Header as='h4'>{this.props.user.username} | {this.props.user.location} </Header> 
 		 				<Header as='h4'>Bio:</Header>
-		 				<p>{props.user.bio}</p>
+		 				<p>{this.props.user.bio}</p>
 		 			</Segment>
 		 		</Grid.Row>
 		 	</Grid.Column>
 		 </Fragment>
 		)
+	}
 	
 }
 
 const mapStateToProps = (state) => {
 	return {user: state.currentUser}
 }
-
-
 
 export default connect(mapStateToProps)(UserInfo)
