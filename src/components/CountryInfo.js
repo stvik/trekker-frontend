@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { addToList } from '../redux/actions'
 import { Image, Grid, Segment, Header, Button } from 'semantic-ui-react'
 import swal from 'sweetalert'
+import ReviewModal from './ReviewModal'
 
 
 class CountryShowPage extends  Component {
@@ -70,6 +71,7 @@ class CountryShowPage extends  Component {
 		 			<>
 			 			<Button inverted basic color='green' content='Add to Travel Goals' onClick={this.addToGoalList}/>
 			 			<Button inverted basic color='green' content="I've been here" onClick={this.addToVisitedList}/>
+			 			<ReviewModal />
 		 			</>
 		 			:
 		 			null}

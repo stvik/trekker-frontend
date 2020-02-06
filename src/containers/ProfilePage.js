@@ -4,6 +4,7 @@ import { Button, Grid } from 'semantic-ui-react'
 import { Link, Redirect } from 'react-router-dom'
 import UserInfo from '../components/UserInfo'
 import TravelList from './TravelList'
+import { setSelectedCountryToNull } from '../redux/actions'
 
 
 class ProfilePage extends  React.Component {
@@ -16,6 +17,7 @@ class ProfilePage extends  React.Component {
 	}
 
 	render() {
+	this.props.setSelectedCountryToNull()
 	return (  
 		<Grid>
 			<Grid.Row>
@@ -40,6 +42,9 @@ const mapStateToProps = (state) => {
 	return {user: state.currentUser}
 }
 
+const mapDispatchToProps = (dispatch) => {
+	return { setSelectedCountryToNull: () => dispatch(setSelectedCountryToNull())}
+}
 
 
-export default connect(mapStateToProps)(ProfilePage)
+export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage)

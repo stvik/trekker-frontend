@@ -1,11 +1,17 @@
 import React from 'react'
 import CountryDropdown from './CountryDropdown'
 import { Button, Grid } from 'semantic-ui-react'
+import { connect } from 'react-redux'
+import { setSelectedCountryToNull} from '../redux/actions'
 
 
 
 const Homepage = (props) => {
-		console.log(props)
+	const onRender = () => {
+		props.setSelectedCountryToNull()
+	}
+	
+	onRender()
 	return (
 		<Grid centered>
 			<Grid.Row centered columns={2}>
@@ -20,6 +26,9 @@ const Homepage = (props) => {
 		)
 }
 
+const mapDispatchToProps = (dispatch) => {
+	return { setSelectedCountryToNull: () => dispatch(setSelectedCountryToNull())}
+}
 
-export default Homepage
+export default connect(null, mapDispatchToProps)(Homepage)
 

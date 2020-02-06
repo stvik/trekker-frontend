@@ -74,10 +74,43 @@ export function updateUser(configObj, id) {
 	return(dispatch) => {
 		fetch(`http://localhost:3000/users/${id}`, configObj)
 		.then(resp => resp.json())
-		.then(user => dispatch({type: 'SET_CURRENT_USER', user}))
+		.then(user => {
+			if (user.error) {
+				swal({
+				text: "Something went wrong...",
+				icon:"error",
+			})
+			} else {
+				dispatch({type: 'SET_CURRENT_USER', user})
+				swal({
+				text: "Profile updated",
+				icon:"success",
+				})
+			}
+		})
 	}
 }
 
+export function createReview(configObj) {
+	return(dispatch) => {
+		fetch('http://localhost:3000/reviews', configObj)
+		.then(resp => resp.json())
+		.then(review => {
+			console.log(review)
+			if (review.error) {
+				swal({
+				text: "Something went wrong...",
+				icon:"error",
+			})
+			} else {
+				swal({
+				text: "Review created",
+				icon:"success",
+				})
+			}
+		})
+	}
+}
 
 
 

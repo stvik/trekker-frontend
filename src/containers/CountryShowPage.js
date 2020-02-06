@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 import { fetchCountry } from '../redux/actions'
-import { Button, Grid } from 'semantic-ui-react'
+import { Button, Grid, Loader } from 'semantic-ui-react'
 import CountryInfo from '../components/CountryInfo'
 import { Link } from 'react-router-dom'
 import TopCitiesContainer from './TopCitiesContainer'
@@ -22,17 +22,23 @@ class CountryShowPage extends  React.Component {
 			<Grid.Row>
 				<Button floated='left' icon='left chevron' color='teal' content='Go Back' onClick={this.props.history.goBack}/>
 			</Grid.Row>
-			<Grid.Row>
-				{this.props.country ? <CountryInfo /> : null}
-			</Grid.Row>
-			<Grid.Row centered> 
-				{this.props.country ? <TopCitiesContainer /> : null}
-			</Grid.Row>
-			<Grid.Row centered>
-				{this.props.country ? 
-				<Map />
-				: null }
-			</Grid.Row>
+			{this.props.country ?
+				<Fragment> 
+					<Grid.Row>
+						<CountryInfo />
+					</Grid.Row>
+					<Grid.Row centered> 
+						<TopCitiesContainer /> 
+					</Grid.Row>
+					<Grid.Row centered> 
+						<Map />
+					</Grid.Row>
+
+				</Fragment>
+			:
+			<Loader active inline='centered' size='massive'/>
+
+			}
 		 </Grid>
 		)
 	}

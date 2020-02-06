@@ -19,6 +19,8 @@ class UserInfo extends Component {
 		})
 	}
 
+	
+
 
 	render() {
 

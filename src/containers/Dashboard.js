@@ -17,12 +17,8 @@ class Dashboard extends Component {
 		return this.props.currentUser.user_countries.filter(uc => uc.travel_goal)
 	}
 
-	onRender = () => {
-		this.props.setSelectedCountryToNull()
-	}
-
 	render() {
-		this.onRender()
+		this.props.setSelectedCountryToNull()
 		return (
 			
 			<Fragment>
