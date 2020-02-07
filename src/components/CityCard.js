@@ -1,14 +1,21 @@
 import React, { Fragment } from 'react'
-import {  Image}  from 'semantic-ui-react'
+import {  Popup, Card, Image }  from 'semantic-ui-react'
 
 
 const CityCard =  (props) => {
-	return (		
-	<Fragment>
-		 < Image  
-		 src='https://source.unsplash.com/random/900%C3%97700/?europe'
-		 />	
-	</Fragment>		
+	return (
+	   <Popup
+        content={props.city.description}
+        header={`Triposo Rating: ${props.city.score.toFixed(2)}`}
+        trigger={	<Card>
+						<Image src={props.city.image}/>
+						<Card.Content>
+							<Card.Header>{props.city.name}</Card.Header>
+							
+						</Card.Content>
+					</Card>	}
+      />		
+	
 	)
 }
 

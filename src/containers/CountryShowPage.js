@@ -36,7 +36,7 @@ class CountryShowPage extends  React.Component {
 						<Map />
 					</Grid.Row>
 					<Grid.Row centered> 
-						<Grid.Column width={2} />
+						
 						<Grid.Column width={10}>
 						<Segment textAlign='left' inverted>
 							<Header as='h1' textAlign='center'>Reviews</Header>
