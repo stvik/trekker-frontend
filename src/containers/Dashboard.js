@@ -29,15 +29,15 @@ class Dashboard extends Component {
 							<TravelList title='Visited' countries={this.props.currentUser ? this.filterVisited() : null}/>
 						</Grid.Column>
 						<Grid.Column width={8}>
-						 	<Segment style={{minHeight:'500px'}}>
+						 	<Container style={{minHeight:'500px'}}>
 						 		<Map 
 						 		goals={this.props.currentUser ? this.filterGoals() : null}
 						 		visited={this.props.currentUser ? this.filterVisited() : null}
-						 		startingLat={0} 
+						 		startingLat={30} 
 						 		startingLong={0} 
 						 		zoom={1} 
 						 		/>
-						 	</Segment>
+						 	</Container>
 						</Grid.Column>
 						<Grid.Column width={4}>
 							<TravelList title='Travel Goals' countries={this.props.currentUser ? this.filterGoals() : null}/>

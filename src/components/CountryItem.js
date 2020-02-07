@@ -31,8 +31,8 @@ const CountryItem =  (props) => {
 		 <Item.Content verticalAlign="middle">
 			<Item.Header><Link to={`/countries/${props.country.id}`}>{props.country.name}</Link></Item.Header>
 			<Item.Extra>
-	          <Button circular basic size='small' color='red' floated='right' onClick={deleteItem}><Icon name='delete'/></Button>
-	        </Item.Extra>
+	          <Icon name='delete' color='red' link onClick={deleteItem}/>
+	         </Item.Extra>
 		</Item.Content>
 	</Item>	
 	

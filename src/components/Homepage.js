@@ -10,7 +10,7 @@ const Homepage = (props) => {
 	const onRender = () => {
 		props.setSelectedCountryToNull()
 	}
-	
+
 	onRender()
 	return (
 		<Grid centered>
@@ -20,7 +20,7 @@ const Homepage = (props) => {
 				</Grid.Column>
 			</Grid.Row>
 			<Grid.Row>
-				<Button onClick={() => props.history.push(`/countries/${Math.floor(Math.random() * (250)) + 1}`)}>Explore a Random Country</Button>
+				<Button onClick={() => props.history.push(`/countries/${Math.floor(Math.random() * (1251 - 1001)) + 1001}`)}>Explore a Random Country</Button>
 			</Grid.Row>
 		</Grid>
 		)

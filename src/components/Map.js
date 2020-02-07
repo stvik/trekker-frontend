@@ -14,7 +14,7 @@ class Map extends React.Component {
 			viewport: {
 				   width: '47vw',
 				    height: '60vh',
-				    latitude: 0,
+				    latitude: 30,
 				    longitude: 30,
 				    zoom: 1
 			}
@@ -43,12 +43,12 @@ class Map extends React.Component {
 
 	showGoals = () => {
 		return (this.props.goals.map((goal, index) => <Marker latitude={goal.country.latitude} longitude={goal.country.longitude} key={index}>
-      														<Icon name='map pin' color='violet'/></Marker>))
+      														<Icon name='flag' color='violet'/></Marker>))
 	}
 
 	showVisited = () => {
 		return (this.props.visited.map((visit,index) => <Marker latitude={visit.country.latitude} longitude={visit.country.longitude}  key={index}>
-      														<Icon name='map pin' color='orange'/></Marker>))
+      														<Icon name='flag' color='orange'/></Marker>))
 	}
 
 
@@ -65,6 +65,8 @@ class Map extends React.Component {
       		{this.props.goals ? this.showGoals() : null}
       		{this.props.visited ? this.showVisited() : null}
       		{this.props.country ? this.showCities() : null}
+      		{this.props.country ? <Marker latitude={this.props.country.latitude} longitude={this.props.country.longitude} >
+      														<Icon name='flag' color='black'/></Marker> : null}
       		</ReactMapGL>
 
 		)

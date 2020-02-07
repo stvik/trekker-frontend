@@ -1,11 +1,13 @@
 import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 import { fetchCountry } from '../redux/actions'
-import { Button, Grid, Loader } from 'semantic-ui-react'
+import { Button, Grid, Loader, Segment, Header, Item } from 'semantic-ui-react'
 import CountryInfo from '../components/CountryInfo'
 import { Link } from 'react-router-dom'
 import TopCitiesContainer from './TopCitiesContainer'
 import Map from '../components/Map'
+import ReviewModal from '../components/ReviewModal'
+import ReviewItem from '../components/ReviewItem'
 
 class CountryShowPage extends  React.Component {
 
@@ -32,6 +34,23 @@ class CountryShowPage extends  React.Component {
 					</Grid.Row>
 					<Grid.Row centered> 
 						<Map />
+					</Grid.Row>
+					<Grid.Row centered> 
+						<Grid.Column width={2} />
+						<Grid.Column width={10}>
+						<Segment textAlign='left' inverted>
+							<Header as='h1' textAlign='center'>Reviews</Header>
+							{this.props.country.reviews.length ? 
+								this.props.country.reviews.map(review => <ReviewItem review={review} />)
+								:
+								<Fragment>
+									<Header as='h3'>There are no reviews for this country</Header>
+									<Header as='h4'>Been here?</Header>
+									<ReviewModal />
+								</Fragment>
+							}
+						</Segment>
+						</Grid.Column>
 					</Grid.Row>
 
 				</Fragment>
