@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { addToList } from '../redux/actions'
-import { Image, Grid, Segment, Header, Button } from 'semantic-ui-react'
+import { Image, Grid, Segment, Header, Button, Message } from 'semantic-ui-react'
 import swal from 'sweetalert'
 import ReviewModal from './ReviewModal'
 
@@ -62,7 +62,14 @@ class CountryShowPage extends  Component {
 		 	<Grid.Column width={10} >
 		 		<Segment inverted style={{opacity:.7}}> 
 		 			<Header as='h1'>{country.name}</Header>
-		 			<p>{country.description}</p>
+		 			{country.warning ?  <Message warning>
+    										<Message.Header>Warning</Message.Header>
+    										<p>{country.warning.replace( /(<([^>]+)>)/ig, '').replace( /(&quot;)/ig, "'")}</p>
+ 										 </Message>
+ 										 :
+ 										 null
+ 										}
+		 			<p>{country.description.replace( /(<([^>]+)>)/ig, '').replace( /({([^>]+)})/ig, '').replace(/\(([^()]*)\)/ig, '').replace( /(&([^>]+);)/ig, '')}</p>
 		 			<Header as='h4'>Continent: {country.continent}</Header>
 		 			<Header as='h4'>Population: {country.population}</Header>
 		 			<Header as='h4'>Languages: {country.languages}</Header>

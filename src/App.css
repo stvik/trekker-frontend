@@ -35,11 +35,22 @@
   }
 }
 
-body {
+
+
+.background {
+    min-height: 102vh;
+    margin: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment:  fixed;
+    position: relative;
+}
+
+/*body {
   background-image: url('https://img5.goodfon.com/wallpaper/nbig/2/1d/4k-ultra-hd-background-blur-effect-mountains-forest-trees-mo.jpg')  !important;
   background-size: cover !important;
   background-attachment: fixed !important;
-}
+}*/
 
 .mapContainer {
 position: absolute;
@@ -47,5 +58,22 @@ top: 0;
 right: 0;
 left: 0;
 bottom: 0;
+}
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
 }
 

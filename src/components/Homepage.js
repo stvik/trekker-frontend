@@ -1,6 +1,6 @@
 import React from 'react'
 import CountryDropdown from './CountryDropdown'
-import { Button, Grid } from 'semantic-ui-react'
+import { Button, Grid, Header, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { setSelectedCountryToNull} from '../redux/actions'
 
@@ -14,6 +14,12 @@ const Homepage = (props) => {
 	onRender()
 	return (
 		<Grid centered>
+			<Grid.Row centered columns={2}>
+			    <Header as='h1' icon textAlign='center'>
+			      <Icon name='compass outline'  />
+			      <Header.Content>Trekker</Header.Content>
+    			</Header>
+			</Grid.Row>
 			<Grid.Row centered columns={2}>
 				<Grid.Column>
 					<CountryDropdown history={props.history}/>

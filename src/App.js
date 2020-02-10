@@ -11,14 +11,42 @@ import { fetchCountries } from './redux/actions'
 import Homepage from './components/Homepage'
 import {Switch, Route, Redirect} from 'react-router-dom'
 
+
 class App extends Component {
-  componentDidMount () {
-    this.props.fetchCountries()
+
+  constructor() {
+    super()
+    this.state = {
+      countryBackground: {
+        background: 'https://images.unsplash.com/photo-1493724798364-c4ca5e3f5fd3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1462&q=80'
+    }
+    }
   }
 
+
+  componentDidMount () {
+    this.props.fetchCountries()
+
+    this.inverval = setInterval(() => this.setState({countryBackground: this.getRandomBackground()}),50000) 
+  }
+
+  componentWillUnmount() {
+  clearInterval(this.interval);
+  }
+
+  getRandomBackground() {
+    if (this.props.countries.length) {
+      let countriesWithBG = this.props.countries.filter(country => country.background)
+      let background = countriesWithBG[Math.floor(Math.random()*countriesWithBG.length)]
+      return background
+    }else {
+      return { background: 'https://images.unsplash.com/photo-1493724798364-c4ca5e3f5fd3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1462&q=80' }
+    }
+  }
   render() {
       return (
       <>
+       <div className='background' style={{backgroundImage: `url(${this.state.countryBackground.background})`}} >
         <Navbar />
         <Switch>
           <Route exact path="/" component={Homepage} />
@@ -34,6 +62,7 @@ class App extends Component {
           <Redirect to="/login" />
           }
         </Switch>
+        </div>
       </>
     )
   }

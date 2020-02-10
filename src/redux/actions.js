@@ -112,6 +112,12 @@ export function createReview(configObj) {
 	}
 }
 
+export function setCurrentUserToNull() {
+	return(dispatch) => {
+	dispatch({type: 'SET_CURRENT_USER_TO_NULL'})
+	}	
+}
+
 
 
 

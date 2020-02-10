@@ -38,6 +38,8 @@ function userReducer(state=null, action) {
 			return { ...state,
 				user_countries: [...state.user_countries, action.userCountry]
 			 }
+		case 'SET_CURRENT_USER_TO_NULL':
+			return null
 		default:
 			return state
 	}
