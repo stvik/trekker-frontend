@@ -6,6 +6,7 @@ import CountryDropdown from '../components/CountryDropdown'
 import TravelList from './TravelList'
 import Map from '../components/Map'
 import { setSelectedCountryToNull } from '../redux/actions'
+import RecommendationsContainer from './RecommendationsContainer'
 
 class Dashboard extends Component {
 
@@ -43,6 +44,12 @@ class Dashboard extends Component {
 							<TravelList title='Travel Goals' countries={this.props.currentUser ? this.filterGoals() : null}/>
 						</Grid.Column>
 					</Grid.Row>
+					<Grid.Row centered columns={2}>
+						<Grid.Column>
+							<RecommendationsContainer />
+						</Grid.Column>
+					</Grid.Row>
+
 
 				</Grid>
 				

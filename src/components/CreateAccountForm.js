@@ -1,5 +1,5 @@
 import React, { Component} from 'react'
-import { Icon, Grid, Header, Segment, Button, Form}  from 'semantic-ui-react'
+import { Icon, Grid, Header, Segment, Button, Form, Dropdown}  from 'semantic-ui-react'
 import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { postUser } from '../redux/actions'
@@ -7,6 +7,13 @@ import { postUser } from '../redux/actions'
 
 
 class CreateAccountPage extends Component {
+
+	// constructor() {
+	// 	super()
+	// 	this.state ={
+	// 		visitedCountries: []
+	// 	}
+	// }
 
 	handleSubmit = (e) => {
 		const newAccount = {
@@ -30,13 +37,25 @@ class CreateAccountPage extends Component {
 
 	}
 
+	// getCountryOptions() {
+	// 	return this.props.countries.map(country => ({key: country.country_code.toLowerCase(),
+	// 									 value: country.country_code.toLowerCase(), 
+	// 									 text: country.name}))
+	// }
+
+	// onSelect = (e) => {
+	// 	this.setState({
+	// 		visitedCountries: [...this.state.visitedCountries, e.currentTarget.innerText]
+	// 	})
+	// }
+
 	render() {
 
 		return (  
 			
 		<Grid centered>
 
-			 <Segment inverted padded textAlign='center' style={{opacity:.7}}>
+			 <Segment inverted padded textAlign='center'>
 			 	<Icon name='user circle' size='massive' />
 			 	<Header as='h2'>Create an Account</Header>
 			 	<Form onSubmit={this.handleSubmit}>
@@ -46,9 +65,19 @@ class CreateAccountPage extends Component {
 			 		</Form.Group>
 			 		<Form.Input name='username' placeholder='Username' />
 			 		<Form.Input name='password' type='password' placeholder='Password' />
-			 		<Form.Input name='bio' placeholder='Tell us about yourself..' />
+			 		<Form.TextArea name='bio' placeholder='Tell us about yourself..' />
 			 		<Form.Input name='location' placeholder='Where do you currently live?' />
 			 		<Form.Input name='image'placeholder='Picture URL' />
+			 		  {/*<Dropdown
+			 		  		name='countries'
+						    placeholder='Which countries have you been to?'
+						    fluid
+						    multiple
+						    search
+						    selection
+						    options={this.getCountryOptions()}
+						    onChange={this.onSelect}
+						  /> */}
 			 		{this.props.currentUser ?  <Redirect to='/dashboard' /> : <Button content='Create Account' color='teal'/>}
 			 	</Form>
 			 </Segment>
@@ -58,7 +87,9 @@ class CreateAccountPage extends Component {
 }
 
 const mapStateToProps = (state) => {
-	return {currentUser: state.currentUser}
+	return {currentUser: state.currentUser,
+			countries: state.countries
+	}
 }
 
 function mapDispatchToProps(dispatch) {

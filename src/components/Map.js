@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux'
 import ReactMapGL, { Marker } from 'react-map-gl'
-import { Icon } from 'semantic-ui-react'
+import { Icon, Popup } from 'semantic-ui-react'
 
 
 
@@ -12,7 +12,7 @@ class Map extends React.Component {
 		super()
 		this.state = {
 			viewport: {
-				   width: '47vw',
+				   width: '49vw',
 				    height: '60vh',
 				    latitude: 30,
 				    longitude: 30,
@@ -37,8 +37,11 @@ class Map extends React.Component {
 
 	showCities = () => {
 
-		return (this.props.country.cities.map((city,index) => <Marker latitude={city.latitude} longitude={city.longitude} key={index}>
-      														<Icon name='map pin' color='orange' /></Marker>))
+		return (this.props.country.cities.map((city,index) =>	 (<Popup 
+																trigger={(<Marker latitude={city.latitude} longitude={city.longitude} key={index}>
+      																	<Icon name='map pin' color='orange' />
+      																</Marker>)}
+      																 content='hello' />)))
 	}
 
 	showGoals = () => {

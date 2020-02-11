@@ -14,6 +14,8 @@ const CityCard =  (props) => {
 							
 						</Card.Content>
 					</Card>	}
+		inverted
+		position='bottom right'
       />		
 	
 	)

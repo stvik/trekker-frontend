@@ -16,11 +16,16 @@ export function fetchCountry(id) {
 	}
 }
 
-export function postUser(configObj) {
+export function postUser(configObj, visitedCountries) {
 	return(dispatch) => {
 		fetch('http://localhost:3000/users', configObj)
 		.then(resp => resp.json())
-		.then(user => dispatch({type: 'SET_CURRENT_USER', user}))
+		.then(user => {
+			
+
+
+			dispatch({type: 'SET_CURRENT_USER', user})
+		})
 	}
 }
 

@@ -1,16 +1,25 @@
 import React from 'react'
-import { Link, NavLink, withRouter } from "react-router-dom";
-import { Dropdown, Grid, Icon } from 'semantic-ui-react'
+import { Link, NavLink, withRouter, Redirect } from "react-router-dom";
+import { Dropdown, Grid, Icon, Popup, Button, Image } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { setCurrentUserToNull } from '../redux/actions'
 const Navbar = (props) => {
 
 	return (
 	<Grid >
-    	<Grid.Column floated='left' width={1}>
-        <Link to='/'><Icon name='compass outline' size='huge'/ ></Link>
+    	<Grid.Column floated='left' width={3}>
+        <Link to='/'><p className='logo'><Image size='tiny' src='https://freesvg.org/img/Compass-Rose.png'/ >Trekker</p></Link>
     	</Grid.Column>
-    	<Grid.Column floated='right' width={1}>
+    	<Grid.Column floated='right' fluid width={2}>
+
+         <Popup
+         trigger={<Icon link name='question circle'  size='huge'/>}
+         on='click'
+         content={<div><h1>{props.countryBackground.name}</h1><Button ><Link to={`/countries/${props.countryBackground.id}`}>Go to Info Page</Link></Button></div>}
+         position='bottom right'
+         size='huge'
+         inverted
+         />
      		{props.currentUser ? 
            <Dropdown
             button

@@ -30,7 +30,7 @@ class CountryShowPage extends  React.Component {
 						<CountryInfo />
 					</Grid.Row>
 					<Grid.Row centered> 
-						<TopCitiesContainer /> 
+						{this.props.country.cities.length ? <TopCitiesContainer /> : null }
 					</Grid.Row>
 					<Grid.Row centered> 
 						<Map />

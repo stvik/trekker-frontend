@@ -20,7 +20,7 @@ const LoginPage =  (props) => {
 		
 	<Grid centered>
 
-		 <Segment inverted textAlign='center' style={{opacity:.7}}>
+		 <Segment inverted textAlign='center' className='loginSegment'>
 		 	<Icon name='user circle' size='massive' />
 		 	<Divider />
 		 	<Form onSubmit={handleSubmit}>

@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import { connect } from 'react-redux'
 import './App.css';
+import { Icon } from 'semantic-ui-react'
 import Navbar from './components/Navbar'
 import CountryShowPage from './containers/CountryShowPage'
 import LoginPage from './containers/LoginPage'
@@ -18,6 +19,8 @@ class App extends Component {
     super()
     this.state = {
       countryBackground: {
+        id: 1011,
+        name: "Argentina",
         background: 'https://images.unsplash.com/photo-1493724798364-c4ca5e3f5fd3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1462&q=80'
     }
     }
@@ -47,7 +50,7 @@ class App extends Component {
       return (
       <>
        <div className='background' style={{backgroundImage: `url(${this.state.countryBackground.background})`}} >
-        <Navbar />
+        <Navbar countryBackground={this.state.countryBackground}/>
         <Switch>
           <Route exact path="/" component={Homepage} />
           <Route exact path='/countries/:countryId' component={CountryShowPage} />

@@ -35,6 +35,12 @@
   }
 }
 
+.citiesContainer {
+  max-width: 70vw;
+  white-space: nowrap;
+
+}
+
 
 
 .background {
@@ -46,11 +52,22 @@
     position: relative;
 }
 
+.loginSegment {
+  min-width: 20vw;
+  min-height: 40vh;
+}
+
 /*body {
   background-image: url('https://img5.goodfon.com/wallpaper/nbig/2/1d/4k-ultra-hd-background-blur-effect-mountains-forest-trees-mo.jpg')  !important;
   background-size: cover !important;
   background-attachment: fixed !important;
 }*/
+
+.ui.card { display: inline-block; overflow-x: scroll; }
+
+.logo {
+  font-family: 'Julius Sans One', sans-serif;
+}
 
 .mapContainer {
 position: absolute;
