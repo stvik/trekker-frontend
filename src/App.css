@@ -44,6 +44,10 @@
 
 
 .background {
+    padding-top: 10px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    padding-left: 30px;
     min-height: 102vh;
     margin: 0;
     background-size: cover;
@@ -51,6 +55,37 @@
     background-attachment:  fixed;
     position: relative;
 }
+
+.ui.color1.button {
+  background-color: #6F04D9;
+  color: #fff;
+}
+
+.ui.color2.button {
+  background-color: #8245BF;
+  color: #fff;
+}
+
+.ui.color3.button {
+  background-color: #6805F2;
+  color: #fff;
+}
+
+.ui.color4.button {
+  background-color: #05F29B;
+  color: #000;
+}
+
+.ui.color5.button {
+  background-color: #F2CB05;
+  color: #000;
+}
+
+.ui.inverted.segment.transparent{
+  background: rgba(0, 0, 0, 0.8);
+}
+
+
 
 .loginSegment {
   min-width: 20vw;
@@ -65,8 +100,18 @@
 
 .ui.card { display: inline-block; overflow-x: scroll; }
 
+.navbar {
+  font-family: 'Lobster Two', cursive;
+  font-size: 40px;
+  text-shadow: #999794 1px 0 50px;
+  color: #000;
+}
+
 .logo {
-  font-family: 'Julius Sans One', sans-serif;
+  font-family: 'Lobster Two', cursive;
+  font-size: 80px;
+  text-shadow: #999794 1px 0 50px;
+  color: #000;
 }
 
 .mapContainer {
@@ -93,4 +138,5 @@ bottom: 0;
   opacity: 0.01;
   transition: opacity 300ms ease-in;
 }
+
 

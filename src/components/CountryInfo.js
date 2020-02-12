@@ -7,7 +7,7 @@ import ReviewModal from './ReviewModal'
 
 
 class CountryShowPage extends  Component {
-
+	// sends through configured object to dispatch, using either addToGoalList or addToVisitedList
 	addToTravelList = (listItem) => {
 
 		const configObj = {
@@ -21,7 +21,7 @@ class CountryShowPage extends  Component {
 		this.props.addToList(configObj)
 
 	}
-
+	//configures the new list item if goal button is clicked
 	addToGoalList = () => {
 		const newListItem = {
 			user_id: this.props.user.id,
@@ -32,7 +32,7 @@ class CountryShowPage extends  Component {
 
 		this.addToTravelList(newListItem)
 	}
-
+	//configures the new list item if visited button is clicked
 	addToVisitedList = () => {
 		const newListItem = {
 				user_id: this.props.user.id,
@@ -43,15 +43,26 @@ class CountryShowPage extends  Component {
 
 		this.addToTravelList(newListItem)
 	}
-
+	//formats number with commas
 	numberWithCommas = (number) => {
    	 return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
 
+	formatWarning = () => {
+		return this.props.country.warning.replace( /(<([^>]+)>)/ig, '').replace( /(&([^>]+);)/ig, "")
+	}
 
+	formatDescription = () => {
+		return this.props.country.description.replace( /(<([^>]+)>)/ig, '').replace( /({([^>]+)})/ig, '').replace(/\(([^()]*)\)/ig, '').replace( /(&([^>]+);)/ig, '')
+	}
+
+	// displayListButtonsIfLoggedIn = () => {
+	// 	if 
+	// }
 
 
 	render() {
+		console.log(this.props.user)
 		const country = this.props.country
 	return ( 
 
@@ -65,16 +76,16 @@ class CountryShowPage extends  Component {
 				 />
 		 	</Grid.Column>
 		 	<Grid.Column width={10} >
-		 		<Segment inverted className='infoSegment'> 
+		 		<Segment inverted className='transparent'> 
 		 			<Header as='h1' className='segmentItem'>{country.name}</Header>
 		 			{country.warning ?  <Message warning >
     										<Message.Header>Warning</Message.Header>
-    										<p>{country.warning.replace( /(<([^>]+)>)/ig, '').replace( /(&([^>]+);)/ig, "")}</p>
+    										<p>{this.formatWarning()}</p>
  										 </Message>
  										 :
  										 null
  										}
-		 			<p>{country.description.replace( /(<([^>]+)>)/ig, '').replace( /({([^>]+)})/ig, '').replace(/\(([^()]*)\)/ig, '').replace( /(&([^>]+);)/ig, '')}</p>
+		 			<p>{this.formatDescription()}</p>
 		 			<Header as='h4'>Continent: {country.continent}</Header>
 		 			<Header as='h4'>Population: {this.numberWithCommas(country.population)}</Header>
 		 			<Header as='h4'>Language: {country.languages}</Header>

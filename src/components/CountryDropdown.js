@@ -29,6 +29,7 @@ class CountryDropdown extends React.Component {
 		const countryOptions = (countries.length ? this.getCountryOptions(countries) : null)
 		return (
 				<Form onSubmit={() => this.handleSubmit(countries)}>
+					<Form.Group>
 					<Dropdown
 					placeholder='Where do you want to go?'
 					fluid
@@ -37,7 +38,8 @@ class CountryDropdown extends React.Component {
 					options={countryOptions}
 					onSelect={(e) => this.setState({searchValue: e.currentTarget.innerText}) }
 					/>
-		  			<Button type='submit' >Search</Button>
+		  			<Button type='submit' className='color5'>Search</Button>
+		  			</Form.Group>
 
 	  			</Form>
 

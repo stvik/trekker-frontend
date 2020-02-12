@@ -19,9 +19,6 @@ class UserInfo extends Component {
 		})
 	}
 
-	
-
-
 	render() {
 
 	return ( 
@@ -37,11 +34,10 @@ class UserInfo extends Component {
 		 	</Grid.Column>
 		 	<Grid.Column width={10} >
 		 		<Grid.Row>
-		 				<Header as='h1'> {this.props.user.firstname} {this.props.user.lastname}</Header>
-		 				<EditModal user={this.props.user}/>
-		 		</Grid.Row>
-		 		<Grid.Row>
-		 			<Segment inverted style={{opacity:.7}}>
+		 			<Segment inverted className='transparent'>
+			 			<Header as='h1'> {this.props.user.firstname} {this.props.user.lastname}</Header>
+			 			<EditModal user={this.props.user}/>
+
 		 				<Header as='h4'>{this.props.user.username} | {this.props.user.location} </Header> 
 		 				<Header as='h4'>Bio:</Header>
 		 				<p>{this.props.user.bio}</p>

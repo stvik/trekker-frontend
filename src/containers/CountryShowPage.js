@@ -22,7 +22,7 @@ class CountryShowPage extends  React.Component {
 	return (  
 		<Grid>
 			<Grid.Row>
-				<Button floated='left' icon='left chevron' color='teal' content='Go Back' onClick={this.props.history.goBack}/>
+				<Button floated='left' icon='left chevron' className='color4' content='Go Back' onClick={this.props.history.goBack}/>
 			</Grid.Row>
 			{this.props.country ?
 				<Fragment> 
@@ -38,7 +38,7 @@ class CountryShowPage extends  React.Component {
 					<Grid.Row centered> 
 						
 						<Grid.Column width={10}>
-						<Segment textAlign='left' inverted>
+						<Segment textAlign='left' inverted className='transparent'>
 							<Header as='h1' textAlign='center'>Reviews</Header>
 							{this.props.country.reviews.length ? 
 								this.props.country.reviews.map(review => <ReviewItem review={review} />)

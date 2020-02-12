@@ -20,16 +20,16 @@ const LoginPage =  (props) => {
 		
 	<Grid centered>
 
-		 <Segment inverted textAlign='center' className='loginSegment'>
+		 <Segment inverted textAlign='center' className='transparent'>
 		 	<Icon name='user circle' size='massive' />
 		 	<Divider />
 		 	<Form onSubmit={handleSubmit}>
 		 		<Form.Input name='username' placeholder='username' />
 		 		<Form.Input name='password' type='password' placeholder='password' />
-		 		{props.currentUser ? <Redirect to='/dashboard' /> : <Button content='Login' color='teal'/> }
+		 		{props.currentUser ? <Redirect to='/dashboard' /> : <Button content='Login' className='color3'/> }
 		 	</Form>
 		 		<Divider horizontal inverted >Or</Divider>
-		 		<Link to='/users/new'><Button content='Create an Account' color='olive'/></Link>
+		 		<Link to='/users/new'><Button content='Create an Account' className='color5'/></Link>
 		 </Segment>
 	</Grid>
 	

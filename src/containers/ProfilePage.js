@@ -37,15 +37,12 @@ class ProfilePage extends  React.Component {
 	return (  
 		<Grid>
 			<Grid.Row>
-				<Link to='/dashboard'><Button floated='left' icon='left chevron' color='teal' content='Back to Dashboard'/></Link>
-			</Grid.Row>
-			<Grid.Row>
 				{this.props.user ? <UserInfo /> : <Redirect to='/login' />}
 			</Grid.Row>
 			<Grid.Row > 
 				<Grid.Column width={3} ><TravelList title='Visited' countries={this.filterVisited()}/></Grid.Column>
 				<Grid.Column width={10} >
-						<Segment textAlign='left' inverted>
+						<Segment className='transparent' textAlign='left' inverted style={{overflow: 'auto', minHeight: 600, maxHeight:600}}>
 							<Header as='h1' textAlign='center'>Reviews By {this.props.user.firstname}</Header>
 							{this.state.reviews.length ? 
 								this.state.reviews.map(review => <ReviewItem review={review} />)

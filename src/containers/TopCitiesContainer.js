@@ -46,7 +46,7 @@ class TopCitiesContainer extends React.Component {
 	render() {
 	return (  
 
-		<Segment inverted className='citiesContainer'>
+		<Segment inverted className='citiesContainer transparent'>
 			<Grid centered>
 
 				<Grid.Row>

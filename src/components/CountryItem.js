@@ -17,7 +17,6 @@ const CountryItem =  (props) => {
 		.then((willDelete) => {
 			if (willDelete) {
 				props.deleteListItem(props.userCountryId)
-				swal("It's gone!", {icon: 'success'},)
 			}
 			})
 	}

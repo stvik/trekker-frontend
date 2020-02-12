@@ -13,11 +13,11 @@ const Homepage = (props) => {
 
 	onRender()
 	return (
-		<Grid centered>
-			<Grid.Row centered columns={2}>
+		<Grid centered verticalAlign='middle' columns={2}>
+			<Grid.Row centered>
 			    <Header as='h1' icon textAlign='center'>
-			      <Icon name='compass outline'  />
-			      <Header.Content>Trekker</Header.Content>
+			      <Icon name='compass outline' className='logo' />
+			      <Header.Content className='logo'>Trekker</Header.Content>
     			</Header>
 			</Grid.Row>
 			<Grid.Row centered columns={2}>
@@ -26,7 +26,7 @@ const Homepage = (props) => {
 				</Grid.Column>
 			</Grid.Row>
 			<Grid.Row>
-				<Button onClick={() => props.history.push(`/countries/${Math.floor(Math.random() * (1251 - 1001)) + 1001}`)}>Explore a Random Country</Button>
+				<Button className='color5' onClick={() => props.history.push(`/countries/${Math.floor(Math.random() * (1251 - 1001)) + 1001}`)}>Explore a Random Country</Button>
 			</Grid.Row>
 		</Grid>
 		)

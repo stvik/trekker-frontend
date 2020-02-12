@@ -55,7 +55,7 @@ class CreateAccountPage extends Component {
 			
 		<Grid centered>
 
-			 <Segment inverted padded textAlign='center'>
+			 <Segment inverted padded textAlign='center' className='transparent'>
 			 	<Icon name='user circle' size='massive' />
 			 	<Header as='h2'>Create an Account</Header>
 			 	<Form onSubmit={this.handleSubmit}>
@@ -78,7 +78,7 @@ class CreateAccountPage extends Component {
 						    options={this.getCountryOptions()}
 						    onChange={this.onSelect}
 						  /> */}
-			 		{this.props.currentUser ?  <Redirect to='/dashboard' /> : <Button content='Create Account' color='teal'/>}
+			 		{this.props.currentUser ?  <Redirect to='/dashboard' /> : <Button content='Create Account' className='color3'/>}
 			 	</Form>
 			 </Segment>
 		</Grid>
