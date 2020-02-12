@@ -1,19 +1,22 @@
 import React from 'react'
-import { Segment, Icon, Header , Grid, Divider }  from 'semantic-ui-react'
+import { Segment, Icon, Header , Grid, Divider, Button }  from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import swal from 'sweetalert'
+import { deleteReview } from '../redux/actions'
 
 
 const ReviewItem =  (props) => {
 console.log(props)
 	return (
 	<Segment >
-
-		 
 		 	<Grid >
 		 		<Grid.Column width={3}>
-		 		<h2><Icon name='user circle' textAlign='center'/>{props.review.user.username}</h2>
+		 			<h2>{props.country}</h2>
+		 			<h2><Icon name='user circle' textAlign='center'/>{props.review.user ? props.review.user.username : props.user.username}</h2>
+
+		 			<p>{props.review.user ? props.review.user.location : props.user.location}</p>
+		 			{ props.profile || (props.user && props.review.user && props.review.user.id === props.user.id) ? <Button onClick={() => props.deleteReview(props.review.id)}>Delete</Button> : null}
 		 		</Grid.Column>
 		 		<Divider vertical />
 		 		<Grid.Column width={6}>
@@ -48,4 +51,8 @@ const mapStateToProps = (state) => {
 		}
 }
 
-export default connect(mapStateToProps)(ReviewItem)
+const mapDispatchToProps = (dispatch) => {
+	return {deleteReview: (id, user) => dispatch(deleteReview(id))}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ReviewItem)

@@ -101,7 +101,6 @@ export function createReview(configObj) {
 		fetch('http://localhost:3000/reviews', configObj)
 		.then(resp => resp.json())
 		.then(review => {
-			console.log(review)
 			if (review.error) {
 				swal({
 				text: "Something went wrong...",
@@ -112,6 +111,7 @@ export function createReview(configObj) {
 				text: "Review created",
 				icon:"success",
 				})
+				dispatch({type: 'ADD_REVIEW', review})
 			}
 		})
 	}
@@ -121,6 +121,14 @@ export function setCurrentUserToNull() {
 	return(dispatch) => {
 	dispatch({type: 'SET_CURRENT_USER_TO_NULL'})
 	}	
+}
+
+export function deleteReview(id) {
+	return(dispatch) =>{
+		fetch(`http://localhost:3000/reviews/${id}`, {method: 'DELETE'})
+		.then(resp => resp.json())
+		.then(review=> dispatch({type: 'REMOVE_REVIEW', review}))
+	}
 }
 
 

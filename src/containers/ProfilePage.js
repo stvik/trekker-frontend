@@ -17,10 +17,20 @@ class ProfilePage extends  React.Component {
 		}
 	}
 
-	componentDidMount() {
-		fetch(`http://localhost:3000/reviews?user_id=${this.props.user.id}`)
-		.then(resp => resp.json())
-		.then(data => this.setState({reviews: data}))
+	// componentDidMount() {
+	// 	fetch(`http://localhost:3000/reviews?user_id=${this.props.user.id}`)
+	// 	.then(resp => resp.json())
+	// 	.then(data => this.setState({reviews: data}))
+	// }
+
+	findReviews = () => {
+		let reviews = []
+		this.props.user.user_countries.forEach(user_country => {
+			if (user_country.review) {
+				reviews.push([user_country.review,user_country.country.name])
+			}
+		} )
+		return reviews
 	}
 
 	filterVisited = () => {
@@ -32,7 +42,7 @@ class ProfilePage extends  React.Component {
 	}
 
 	render() {
-	console.log(this.state)
+	console.log(this.props)
 	this.props.setSelectedCountryToNull()
 	return (  
 		<Grid>
@@ -44,8 +54,8 @@ class ProfilePage extends  React.Component {
 				<Grid.Column width={10} >
 						<Segment className='transparent' textAlign='left' inverted style={{overflow: 'auto', minHeight: 600, maxHeight:600}}>
 							<Header as='h1' textAlign='center'>Reviews By {this.props.user.firstname}</Header>
-							{this.state.reviews.length ? 
-								this.state.reviews.map(review => <ReviewItem review={review} />)
+							{this.findReviews().length ? 
+								this.findReviews().map(review => <ReviewItem review={review[0]} country={review[1]} profile={true}/>)
 								:
 								null
 							}

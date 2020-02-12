@@ -19,6 +19,16 @@ function countryReducer(state = null, action) {
 			return  action.country
 		case 'SET_SELECTED_COUNTRY_TO_NULL':
 		  	return null
+		case 'ADD_REVIEW':
+			return {...state,
+				reviews: [...state.reviews, action.review]
+			}
+		case 'REMOVE_REVIEW':
+			if (state) {
+			return {...state,
+				reviews: state.reviews.filter(review => review.id != action.review.id)}
+			}
+			else { return null}
 		default:
 			return state
 	}
@@ -40,6 +50,32 @@ function userReducer(state=null, action) {
 			 }
 		case 'SET_CURRENT_USER_TO_NULL':
 			return null
+		case 'REMOVE_REVIEW':
+			return  {
+				...state,
+				user_countries: state.user_countries.map(uc => {
+					if (uc.review && uc.review.id === action.review.id) {
+						delete uc.review
+						return uc
+					} else {
+						return uc
+					}
+				})
+			}	
+				
+		case 'ADD_REVIEW':
+			return {
+				...state,
+				user_countries: state.user_countries.map(uc => {
+					if (action.review.user_country_id === uc.id) {
+						uc.review = action.review
+						return uc
+					} else {
+						return uc
+					}
+				})
+			}
+
 		default:
 			return state
 	}
