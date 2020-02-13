@@ -24,13 +24,13 @@ class Dashboard extends Component {
 			
 			<Fragment>
 				<Container><CountryDropdown history={this.props.history}/></Container>
-				<Grid>
-					<Grid.Row >
+				<Grid centered>
+					<Grid.Row centered>
 						<Grid.Column width={4}>
 							<TravelList title='Visited' countries={this.props.currentUser ? this.filterVisited() : null}/>
 						</Grid.Column>
-						<Grid.Column width={8}>
-						 	<Container style={{minHeight:'500px'}}>
+						<Grid.Column width={8} centered>
+						 	<Container  >
 						 		<Map 
 						 		goals={this.props.currentUser ? this.filterGoals() : null}
 						 		visited={this.props.currentUser ? this.filterVisited() : null}
@@ -39,16 +39,17 @@ class Dashboard extends Component {
 						 		zoom={1} 
 						 		/>
 						 	</Container>
+						 	<Grid.Row centered columns={2}>
+								<Grid.Column>
+									<RecommendationsContainer />
+								</Grid.Column>
+							</Grid.Row>
 						</Grid.Column>
 						<Grid.Column width={4}>
 							<TravelList title='Travel Goals' countries={this.props.currentUser ? this.filterGoals() : null}/>
 						</Grid.Column>
 					</Grid.Row>
-					<Grid.Row centered columns={2}>
-						<Grid.Column>
-							<RecommendationsContainer />
-						</Grid.Column>
-					</Grid.Row>
+					
 
 
 				</Grid>

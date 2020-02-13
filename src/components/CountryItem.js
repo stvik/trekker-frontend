@@ -26,9 +26,13 @@ const CountryItem =  (props) => {
 	<Item inverted>
 		 < Item.Image  
 		 src={props.country.flag}
+			size='small'
+			as={Link}
+			to={`/countries/${props.country.id}`}
 		 />	
 		 <Item.Content verticalAlign="middle">
-			<Item.Header><Link to={`/countries/${props.country.id}`}>{props.country.name}</Link></Item.Header>
+			<Item.Header as={Link} to={`/countries/${props.country.id}`} style={{fontSize: '20px',
+  color: '#FFF'}}>{props.country.name}</Item.Header>
 			<Item.Extra>
 	          <Icon name='delete' color='red' link onClick={deleteItem}/>
 	         </Item.Extra>

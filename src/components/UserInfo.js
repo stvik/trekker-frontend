@@ -23,8 +23,8 @@ class UserInfo extends Component {
 
 	return ( 
 
-		<Fragment>
-			<Grid.Column width={1} />
+		<Grid centered>
+			
 			<Grid.Column width={4}>
 			 	<Image 
 				 src={this.props.user.image}
@@ -32,11 +32,11 @@ class UserInfo extends Component {
 				 circular
 				 />
 		 	</Grid.Column>
-		 	<Grid.Column width={10} >
+		 	<Grid.Column width={8}>
 		 		<Grid.Row>
 		 			<Segment inverted className='transparent'>
-			 			<Header as='h1'> {this.props.user.firstname} {this.props.user.lastname}</Header>
-			 			<EditModal user={this.props.user}/>
+			 			<Header as='h1'> {this.props.user.firstname} {this.props.user.lastname} <EditModal user={this.props.user}/></Header>
+			 			
 
 		 				<Header as='h4'>{this.props.user.username} | {this.props.user.location} </Header> 
 		 				<Header as='h4'>Bio:</Header>
@@ -44,7 +44,7 @@ class UserInfo extends Component {
 		 			</Segment>
 		 		</Grid.Row>
 		 	</Grid.Column>
-		 </Fragment>
+			</Grid>
 		)
 	}
 	

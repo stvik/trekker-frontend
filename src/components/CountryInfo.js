@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import { addToList } from '../redux/actions'
+import { addToList, deleteListItem } from '../redux/actions'
 import { Image, Grid, Segment, Header, Button, Message } from 'semantic-ui-react'
 import swal from 'sweetalert'
 import ReviewModal from './ReviewModal'
+
 
 
 class CountryShowPage extends  Component {
@@ -56,9 +57,48 @@ class CountryShowPage extends  Component {
 		return this.props.country.description.replace( /(<([^>]+)>)/ig, '').replace( /({([^>]+)})/ig, '').replace(/\(([^()]*)\)/ig, '').replace( /(&([^>]+);)/ig, '')
 	}
 
-	// displayListButtonsIfLoggedIn = () => {
-	// 	if 
-	// }
+	handleDelete = (id) => {
+		swal({
+			text: "Are you sure you want to remove this country?",
+			icon:"warning",
+			buttons: ['Actually, no..', "Yes, I'm sure"],
+			dangerMode: true,
+			})
+			.then((willDelete) => {
+			if (willDelete) {
+				this.props.deleteListItem(id)
+			}
+		})
+	}
+
+
+	displayListButtonsIfLoggedIn = () => {
+		const userCountry = this.props.user.user_countries.filter(uc => uc.country.id === this.props.country.id)
+
+		if (userCountry.length && userCountry[0].visited) {
+			return (
+				<>
+					<Button color='green' content="You've been here" disabled />
+					<Button inverted color='red' content='Remove from list' onClick={() => this.handleDelete(userCountry[0].id)}/>
+					<ReviewModal />
+				</>)
+		} 
+		else if (userCountry.length && userCountry[0].travel_goal) {
+			return( 
+			<>
+				<Button disabled color='green' content='Added to Travel Goals'/>
+				<Button inverted color='red' content='Remove from list' onClick={() => this.handleDelete(userCountry[0].id)}/>
+			</>	
+			)
+		}
+		else {
+		return (<>
+			 			<Button inverted basic color='green' content='Add to Travel Goals' onClick={this.addToGoalList}/>
+			 			<Button inverted basic color='green' content="I've been here" onClick={this.addToVisitedList}/>
+			 			
+		 		</>)
+		}
+	}
 
 
 	render() {
@@ -91,11 +131,7 @@ class CountryShowPage extends  Component {
 		 			<Header as='h4'>Language: {country.languages}</Header>
 		 			<Header as='h4'>Currency: {country.currency}</Header>
 		 			{this.props.user ?
-		 			<>
-			 			<Button inverted basic color='green' content='Add to Travel Goals' onClick={this.addToGoalList}/>
-			 			<Button inverted basic color='green' content="I've been here" onClick={this.addToVisitedList}/>
-			 			<ReviewModal />
-		 			</>
+		 			this.displayListButtonsIfLoggedIn()
 		 			:
 		 			null}
 		 		</Segment>
@@ -112,7 +148,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-	return { addToList: (configObj) => dispatch(addToList(configObj))}
+	return { addToList: (configObj) => dispatch(addToList(configObj)),
+			deleteListItem: (id) => dispatch(deleteListItem(id))}
 }
 
 

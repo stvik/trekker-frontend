@@ -30,7 +30,7 @@ class App extends Component {
   componentDidMount () {
     this.props.fetchCountries()
 
-    this.inverval = setInterval(() => this.setState({countryBackground: this.getRandomBackground()}),20000) 
+    this.inverval = setInterval(() => this.setState({countryBackground: this.getRandomBackground()}),30000) 
   }
 
   componentWillUnmount() {
@@ -66,6 +66,7 @@ class App extends Component {
           }
         </Switch>
         </div>
+
       </>
     )
   }

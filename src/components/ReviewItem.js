@@ -13,12 +13,14 @@ console.log(props)
 		 	<Grid >
 		 		<Grid.Column width={3}>
 		 			<h2>{props.country}</h2>
-		 			<h2><Icon name='user circle' textAlign='center'/>{props.review.user ? props.review.user.username : props.user.username}</h2>
+		 			<h3><Icon name='user circle' textAlign='center'/>{props.review.user ? props.review.user.username : props.user.username}</h3>
 
 		 			<p>{props.review.user ? props.review.user.location : props.user.location}</p>
 		 			{ props.profile || (props.user && props.review.user && props.review.user.id === props.user.id) ? <Button onClick={() => props.deleteReview(props.review.id)}>Delete</Button> : null}
 		 		</Grid.Column>
+
 		 		<Divider vertical />
+
 		 		<Grid.Column width={6}>
 			 		<h4>Cities Visited: </h4>
 				 	<p>{props.review.cities_visited}</p>
@@ -29,6 +31,7 @@ console.log(props)
 				 	<h4>Things you must see: </h4>
 				 	<p>{props.review.must_see}</p>
 			 	</Grid.Column>
+
 			 	<Grid.Column width={7}>
 				 	<h4>Things you should know: </h4>
 				 	<p>{props.review.should_know}</p>

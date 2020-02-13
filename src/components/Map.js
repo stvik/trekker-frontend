@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux'
 import ReactMapGL, { Marker } from 'react-map-gl'
-import { Icon, Popup } from 'semantic-ui-react'
+import { Icon, Popup, Segment, Grid } from 'semantic-ui-react'
 
 
 
@@ -12,7 +12,7 @@ class Map extends React.Component {
 		super()
 		this.state = {
 			viewport: {
-				   width: '49vw',
+				   width: '47vw',
 				    height: '60vh',
 				    latitude: 30,
 				    longitude: 30,
@@ -25,7 +25,7 @@ class Map extends React.Component {
 		if (this.props.country) {
 			this.setState({
 			viewport: {
-				width:'90vw',
+				width:'80vw',
 				height:'50vh',
 				latitude: this.props.country.latitude,
 				longitude: this.props.country.longitude,
@@ -45,12 +45,12 @@ class Map extends React.Component {
 
 	showGoals = () => {
 		return (this.props.goals.map((goal, index) => <Marker latitude={goal.country.latitude} longitude={goal.country.longitude} key={index}>
-      														<Popup trigger={<Icon name='flag' color='violet'/>} header={goal.country.name} /></Marker>))
+      														<Popup trigger={<Icon name='flag' className='goal'/>} header={goal.country.name} /></Marker>))
 	}
 
 	showVisited = () => {
 		return (this.props.visited.map((visit,index) => <Marker latitude={visit.country.latitude} longitude={visit.country.longitude}  key={index}>
-      														<Popup trigger={<Icon name='flag' color='orange'/>} header={visit.country.name} /></Marker>))
+      														<Popup trigger={<Icon name='flag' className='visited'/>} header={visit.country.name} /></Marker>))
 	}
 
 
@@ -67,6 +67,9 @@ class Map extends React.Component {
       		{this.props.goals ? this.showGoals() : null}
       		{this.props.visited ? this.showVisited() : null}
       		{this.props.country ? this.showCities() : null}
+      
+      			{!this.props.country ? <Segment compact><h4>Visited: <Icon name='flag' className='visited'/> Goal: <Icon name='flag' className='goal'/></h4></Segment> : null }
+    
       		</ReactMapGL>
 
 		)

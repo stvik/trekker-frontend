@@ -9,7 +9,7 @@ const CountryCard = (props) => {
 	return (
 
 		<Card as={Link} to={`/countries/${props.country.id}`}>
-			<Image src={props.country.flag}/>
+			<Image src={props.country.flag} className='displayCard' />
 			<Card.Content>
 				<Card.Header>{props.country.name}</Card.Header>	
 			</Card.Content>

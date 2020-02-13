@@ -6,40 +6,41 @@ import { setCurrentUserToNull } from '../redux/actions'
 const Navbar = (props) => {
 
 	return (
-
+    <>
   <Grid >
     	<Grid.Column floated='left' width={3}>
         <Header as={Link} to='/'><h1 className='navbar'><Icon name='compass'/>Trekker</h1></Header>
     	</Grid.Column>
-          <Popup
-         trigger={<Icon link name='question circle'  size='huge'/>}
-         on='click'
-         content={<div><h1>{props.countryBackground.name}</h1><Button className='color1' as={Link} to={`/countries/${props.countryBackground.id}`}>Go to Info Page</Button></div>}
-         position='bottom right'
-         size='huge'
-         inverted
-         />
-    	<Grid.Column floated='right' fluid width={2}>
+       
+    	<Grid.Column floated='right' fluid width={1}>
      		{props.currentUser ? 
            <Dropdown
             labeled
             icon='user circle'
-            text={props.currentUser.firstname}
+            size='large'
             direction='left'
-            className='icon navbar'
+            className='icon login'
             >
             <Dropdown.Menu>
-              <Dropdown.Item><Link to='/dashboard'>Dashboard</Link></Dropdown.Item>
-              <Dropdown.Item><Link to='/profile'>Profile</Link></Dropdown.Item>
+              <Dropdown.Item as={Link} to='/dashboard'>Dashboard</Dropdown.Item>
+              <Dropdown.Item as={Link} to='/profile'>Profile</Dropdown.Item>
               <Dropdown.Item onClick={props.logout}>Logout</Dropdown.Item>
             </Dropdown.Menu>
             </Dropdown>
           :
-          <Header as={Link} to='/login' textAlign='right'><h1 className='navbar'>Log In</h1></Header>
+          <Header as={Link} to='/login' textAlign='right'><h1 className='navbar'><Icon name='sign in'/></h1></Header>
         }
     	</Grid.Column>
   	</Grid>	
-
+       <Popup
+         trigger={<Icon link name='globe'  className='leftCorner' size='huge'/>}
+         on='click'
+         content={<div><h1>{props.countryBackground.name}</h1><Button className='color1' as={Link} to={`/countries/${props.countryBackground.id}`}>Go to Info Page</Button></div>}
+         position='right'
+         size='massive'
+         inverted
+         />
+         </>
   	)
 }
 

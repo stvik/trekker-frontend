@@ -59,7 +59,7 @@ class EditModal extends Component {
 	
 	render() {
 	return (
-		<Modal trigger={<Icon link name='edit' />} closeIcon>
+		<Modal trigger={<Icon link name='edit' className='editIcon'/>} closeIcon>
 			<Icon name='user circle' size='massive' />
 		    <Modal.Header>Edit Profile</Modal.Header>
 		    <Modal.Content>

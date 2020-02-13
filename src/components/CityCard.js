@@ -8,7 +8,7 @@ const CityCard =  (props) => {
         content={props.city.description}
         header={`Triposo Rating: ${props.city.score.toFixed(2)}`}
         trigger={	<Card>
-						<Image src={props.city.image}/>
+						<Image src={props.city.image} className='displayCard'/>
 						<Card.Content>
 							<Card.Header>{props.city.name}</Card.Header>
 							

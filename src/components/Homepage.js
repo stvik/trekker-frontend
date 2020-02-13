@@ -26,15 +26,21 @@ const Homepage = (props) => {
 				</Grid.Column>
 			</Grid.Row>
 			<Grid.Row>
-				<Button className='color5' onClick={() => props.history.push(`/countries/${Math.floor(Math.random() * (1251 - 1001)) + 1001}`)}>Explore a Random Country</Button>
+				<Button className='color5' onClick={() => props.history.push(`/countries/${props.countries[Math.floor(Math.random()*props.countries.length)].id}`)}>Explore a Random Country</Button>
 			</Grid.Row>
+
 		</Grid>
 		)
+}
+
+const mapStateToProps = (state) => {
+	return { countries: state.countries}
 }
 
 const mapDispatchToProps = (dispatch) => {
 	return { setSelectedCountryToNull: () => dispatch(setSelectedCountryToNull())}
 }
 
-export default connect(null, mapDispatchToProps)(Homepage)
+export default connect(mapStateToProps, mapDispatchToProps)(Homepage)
+
 

@@ -45,24 +45,24 @@ class ProfilePage extends  React.Component {
 	console.log(this.props)
 	this.props.setSelectedCountryToNull()
 	return (  
-		<Grid>
+		<Grid centered>
 			<Grid.Row>
 				{this.props.user ? <UserInfo /> : <Redirect to='/login' />}
 			</Grid.Row>
 			<Grid.Row > 
-				<Grid.Column width={3} ><TravelList title='Visited' countries={this.filterVisited()}/></Grid.Column>
-				<Grid.Column width={10} >
-						<Segment className='transparent' textAlign='left' inverted style={{overflow: 'auto', minHeight: 600, maxHeight:600}}>
+				<Grid.Column width={2} ><TravelList title='Visited' countries={this.filterVisited()}/></Grid.Column>
+				<Grid.Column width={9} >
+						<Segment className='transparent' textAlign='left' inverted style={{overflow: 'auto', minHeight: 500, maxHeight:500}}>
 							<Header as='h1' textAlign='center'>Reviews By {this.props.user.firstname}</Header>
 							{this.findReviews().length ? 
 								this.findReviews().map(review => <ReviewItem review={review[0]} country={review[1]} profile={true}/>)
 								:
-								null
+								<Header as='h3' textAlign='center'>You haven't written any reviews</Header>
 							}
 						</Segment>
 
 				</Grid.Column>
-				<Grid.Column width={3} ><TravelList title='Travel Goals' countries={this.filterGoals()}/></Grid.Column>
+				<Grid.Column width={2} ><TravelList title='Travel Goals' countries={this.filterGoals()}/></Grid.Column>
 
 			</Grid.Row>
 		 </Grid>
